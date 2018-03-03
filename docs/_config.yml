@@ -1,0 +1,23 @@
+
+
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Latin phonology
+tagline:          'Work with phonology of texts in Latin'
+description:      'A library for working texts in Latin phonologically'
+
+
+baseurl: '/latphone/'
+
+
+author:
+  name:           'Neel Smith'
+
+
+links:
+  - title:  Github repository
+    url:  https://github.com/neelsmith/latphone
+    external: true
