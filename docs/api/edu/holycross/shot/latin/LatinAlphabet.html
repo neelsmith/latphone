@@ -145,14 +145,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="edu.holycross.shot">shot</a></dd></dl></div>
     </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="object" href="Latin23Alphabet$.html" title=""></a>
-                        <a href="Latin23Alphabet$.html" title="">
+                        <a class="object" href="Latin23Alphabet$.html" title="Latin alphabet with 23 alphabetic characters."></a>
+                        <a href="Latin23Alphabet$.html" title="Latin alphabet with 23 alphabetic characters.">
                           Latin23Alphabet
                         </a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="" title="Behavior of a Latin alphabet."></a>
-                        <a href="" title="Behavior of a Latin alphabet.">
+                        <a class="trait" href="" title="Behavior of a case-insensitive Latin alphabet."></a>
+                        <a href="" title="Behavior of a case-insensitive Latin alphabet.">
                           LatinAlphabet
                         </a>
                       </li><li class="current-entities indented4">
@@ -189,7 +189,10 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Behavior of a Latin alphabet.</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Behavior of a case-insensitive Latin alphabet.  All alphabetic and punctuation characters
+must be explicitly enumerated in lower-case form.
+White space is ignored in
+evaluating whether a String is valid in a given alphabet.</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -455,6 +458,23 @@ String values.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="edu.holycross.shot.latin.LatinAlphabet#consonant" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="consonant(s:String):Boolean"></a><a id="consonant(String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/latin/LatinAlphabet.html#consonant(s:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">consonant</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">True if s is a consonant.</p><div class="fullcomment"><div class="comment cmt"><p>True if s is a consonant.
+</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>String to check.</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -605,6 +625,23 @@ String values.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="edu.holycross.shot.latin.LatinAlphabet#semivowel" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="semivowel(s:String):Boolean"></a><a id="semivowel(String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/latin/LatinAlphabet.html#semivowel(s:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">semivowel</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">True if s is a semivowel.</p><div class="fullcomment"><div class="comment cmt"><p>True if s is a semivowel.
+</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>String to check.</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -673,6 +710,23 @@ String values.
 in this alphabet.</p><div class="fullcomment"><div class="comment cmt"><p>True if a given non-whitespace character is defined
 in this alphabet.
 </p></div><dl class="paramcmts block"><dt class="param">c</dt><dd class="cmt"><p>Character to check.</p></dd></dl></div>
+    </li><li name="edu.holycross.shot.latin.LatinAlphabet#vowel" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="vowel(s:String):Boolean"></a><a id="vowel(String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/latin/LatinAlphabet.html#vowel(s:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">vowel</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">True if s is a vowel.</p><div class="fullcomment"><div class="comment cmt"><p>True if s is a vowel.
+</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>String to check.</p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">

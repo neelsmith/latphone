@@ -1,6 +1,8 @@
 package edu.holycross.shot.latin
 
-
+/** Latin alphabet with 23 alphabetic characters.
+* "i" and "u" are treated as semivowels.
+*/
 object Latin23Alphabet extends LatinAlphabet {
 
   def alphabetString: String = {
@@ -22,7 +24,7 @@ object Latin23Alphabet extends LatinAlphabet {
     Set("b","c","d","f","g","h","k","l","m","n","p","q","r","s","t","x","y","z")
   }
   def vowels: Set[String] = {
-    Set("a","e","i","o","u")
+    Set("a","e","o")
   }
   def semivowels: Set[String] = {
     Set("i","u")
