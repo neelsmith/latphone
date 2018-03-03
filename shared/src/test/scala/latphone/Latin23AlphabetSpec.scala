@@ -31,4 +31,8 @@ class Latin23AlphabetSpec extends FlatSpec {
     assert (Latin23Alphabet.semivowel("e") == false)
     assert (Latin23Alphabet.semivowel("E") == false)
   }
+
+  it should "have a rational override of default toString " in {
+    assert (s"${Latin23Alphabet}" == "Latin alphabet with 23 alphabetic characters.")
+  }
 }
