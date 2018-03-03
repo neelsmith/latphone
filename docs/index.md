@@ -15,4 +15,4 @@ Major components:
 ## Links
 
 -   Quick start
--   [API docs](api)
+-   [API docs](api/edu/holycross/shot/latin/index.html)
