@@ -71,6 +71,6 @@ trait LatinAlphabet  {
   *
   * @param ls [[LatinString]] to syllabify.
   */
-  def syllabify(ls: LatinString): Vector[String]
+  def syllabify(s: String): Vector[String]
 
 }

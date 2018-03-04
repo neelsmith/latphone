@@ -35,4 +35,22 @@ class Latin23AlphabetSpec extends FlatSpec {
   it should "have a rational override of default toString " in {
     assert (s"${Latin23Alphabet}" == "Latin alphabet with 23 alphabetic characters.")
   }
+
+  it should "break syllables on CVC pattern" in {
+    val domus = "domus"
+    val actual = Latin23Alphabet.syllabify(domus)
+    val expected = Vector("do", "mus")
+
+    assert( actual == expected)
+
+    val amicus = "amicus"
+    val amicusActual = Latin23Alphabet.syllabify(amicus)
+    val amicusExpected = Vector("a", "mi", "cus")
+
+    assert( amicusActual == amicusExpected)
+
+  }
+
+  it should "correctly break syllables on consonant clusters" in {
+  }
 }

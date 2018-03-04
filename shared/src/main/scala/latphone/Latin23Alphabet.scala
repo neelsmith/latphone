@@ -4,6 +4,9 @@ package edu.holycross.shot.latin
 * "i" and "u" are treated as semivowels.
 */
 object Latin23Alphabet extends LatinAlphabet {
+  val vcv = "(.*[aeiou])([bcdfghklmnpqrstvx])([aeiou].*)".r
+
+
 
   def alphabetString: String = {
     "abcdefghiklmnopqrstuxyz"
@@ -30,8 +33,30 @@ object Latin23Alphabet extends LatinAlphabet {
     Set("i","u")
   }
 
-  def syllabify(ls: LatinString): Vector[String] = {
-    Vector.empty
+  def syllabify(s: String): Vector[String] = {
+    val rule1 = s match {
+      case vcv(open,cons,close) =>
+      syllabify(
+        Vector(open,cons + close).mkString("-")).mkString("-")
+      case _ => s
+    }
+    /*
+
+    Rules for syllabication:
+
+
+    1. Single conson between 2 vowels goes with following syll.  do-mus a-mi-cus ful-men
+    2.  when 2+ consons separate vowels, the last goes w following syllab.  sanc-tus dig-punctuationString
+        -  But mute (bdgptc)+ liquid (lr) is an exception.  pu-bli-cus ce-le-bro
+
+    3.  Etymology rules.
+
+
+
+    */
+
+    rule1.split("-").toVector
+    //Vector.empty
   }
 
 
