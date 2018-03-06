@@ -74,11 +74,13 @@ class Latin23AlphabetSpec extends FlatSpec {
   it should "correctly break syllables when a combines with vowel" in {
     val laocoon = "Laocoon"
     val actual =  Latin23Alphabet.syllabify(laocoon)
-    val expected = Vector("La","o","co", "on")
+    val expected = Vector("la","o","co", "on")
     assert( actual == expected)
   }
 
-  it should "correctly break syllables when e combines with vowel" in pending
+  it should "correctly break syllables when e combines with vowel" in {
+
+  }
 
 
   it should "correctly break syllables when i combines with vowel" in {
@@ -91,7 +93,7 @@ class Latin23AlphabetSpec extends FlatSpec {
   it should "correctly break syllables when o combines with vowel" in {
     val laocoon = "Laocoon"
     val actual =  Latin23Alphabet.syllabify(laocoon)
-    val expected = Vector("La","o","co", "on")
+    val expected = Vector("la","o","co", "on")
     assert( actual == expected)
   }
 
@@ -158,5 +160,16 @@ class Latin23AlphabetSpec extends FlatSpec {
     val actual =  Latin23Alphabet.syllabify(deueho)
     val expected = Vector("de","ue","ho")
     assert( actual == expected)
+
+    val servius = "Seruius"
+    val actual2 =  Latin23Alphabet.syllabify(servius)
+    val expected2 = Vector("ser","ui","us")
+    assert( actual2 == expected2)
   }
+
+
+  // di-u-i   ae-u-i
+  // obt-rec-ta-ti-o
+  // Ini-ti-um
+  // Ser-iius
 }

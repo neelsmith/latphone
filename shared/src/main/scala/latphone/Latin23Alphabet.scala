@@ -78,7 +78,7 @@ object Latin23Alphabet extends LatinAlphabet {
   * @param s String to syllabify.
   */
   def syllabify(s: String): Vector[String] = {
-    val protectQu = s.replaceAll("qu","®")
+    val protectQu = s.replaceAll("qu","®").toLowerCase
     val a =   protectQu match {
       case aSplits(opening,apart) =>
       Vector(opening,apart).mkString("-")
@@ -128,7 +128,7 @@ object Latin23Alphabet extends LatinAlphabet {
 
 
 
-    if (rule4 == protectQu) {
+    if (rule4.toLowerCase == protectQu) {
       val adjusted = restoreSemiConsonants(protectQu)
       adjusted.replaceAll("®","qu").split("-").toVector
     } else {
@@ -151,7 +151,7 @@ object Latin23Alphabet extends LatinAlphabet {
     }
 
     val   v1 = i3 match {
-      case syllInitialV(start,cons,rest) =>  start + cons + "-i" + rest
+      case syllInitialV(start,cons,rest) =>  start + cons + "-u" + rest
       case _ => i3
     }
 
@@ -159,17 +159,21 @@ object Latin23Alphabet extends LatinAlphabet {
       case initialV(x) => "u" + x
       case _ => v1
     }
-    println("Now look for fake diph in " + v2)
+
     val v3 = v2 match {
       case fakeDiphthongU(start,diph,rest) => {
-        //val vowels = diph.split
-        println("FOUND DIPH " + diph)
         start + diph(0)  + "-" + diph(1) + rest
-        //start + diph + rest
       }
       case _ => v2
     }
     v3
+/*
+    if (v3 == s) {
+      s
+    } else {
+      syllabify(v3).mkString("-")
+    }
+    */
   }
   override def toString: String = {
     "Latin alphabet with 23 alphabetic characters."
