@@ -26,13 +26,19 @@ object Latin23Alphabet extends LatinAlphabet {
   val uSplits = "(.*u)([aeiou].*)".r
 
   // adjust semivowels
-  val initialJ = "^i-(.+)".r
+  /** RE for word-initial i followed by vowel. */
+  val initialJ = "^i-([aeiou].+)".r
+  /** RE for syllable-initial i followed by vowel. */
   val syllInitialJ = "(.+[aeiou])-([bcfghklmnpqrvx]?)i-([aeiou].+)".r
-  val fakeDiphthong = "(.*)ei-([aeiou].+)".r
+  /** RE for diphthong ei when it should be read as e+semivowel i. */
+  val fakeDiphthongI = "(.*)ei-([aeiou].+)".r
 
-
-  val initialV = "^u-(.+)".r
-
+  /** RE for word-initial i followed by vowel. */
+  val initialV = "^u-([aeiou].+)".r
+  /** RE for syllable-initial i followed by vowel. */
+  val syllInitialV = "(.+[aeiou])-([bcfghklmnpqrvx]?)u-([aeiou].+)".r
+  /** RE for diphthong ei when it should be read as e+semivowel u. */
+  val fakeDiphthongU = "(.*)(au|eu)-([aeiou].+)".r
 
   /** Ordered sequence of alphabetic characters.*/
   def alphabetString: String = {
@@ -140,10 +146,30 @@ object Latin23Alphabet extends LatinAlphabet {
       case _ => i1
     }
     val i3 = i2 match {
-      case fakeDiphthong(start,rest) => start + "e-i"  + rest
+      case fakeDiphthongI(start,rest) => start + "e-i"  + rest
       case _ => i2
     }
-    i3
+
+    val   v1 = i3 match {
+      case syllInitialV(start,cons,rest) =>  start + cons + "-i" + rest
+      case _ => i3
+    }
+
+    val v2 = v1 match {
+      case initialV(x) => "u" + x
+      case _ => v1
+    }
+    println("Now look for fake diph in " + v2)
+    val v3 = v2 match {
+      case fakeDiphthongU(start,diph,rest) => {
+        //val vowels = diph.split
+        println("FOUND DIPH " + diph)
+        start + diph(0)  + "-" + diph(1) + rest
+        //start + diph + rest
+      }
+      case _ => v2
+    }
+    v3
   }
   override def toString: String = {
     "Latin alphabet with 23 alphabetic characters."

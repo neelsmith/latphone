@@ -134,16 +134,29 @@ class Latin23AlphabetSpec extends FlatSpec {
   }
 
   it should "protect qu combination in syllabifying" in {
-    //val quae = "quae"
-    //val actual =  Latin23Alphabet.syllabify(quae)
+    val quae = "quae"
+    val actual =  Latin23Alphabet.syllabify(quae)
     val expected = Vector("quae")
-    //assert( actual == expected)
+    assert( actual == expected)
 
     val eloquentia = "eloquentia"
-    //val actual2 =  Latin23Alphabet.syllabify(eloquentia)
+    val actual2 =  Latin23Alphabet.syllabify(eloquentia)
     val expected2 = Vector("e","lo","quen","ti","a")
-    //assert( actual2 == expected2)
+    assert( actual2 == expected2)
+  }
+
+  it should "correctly syllabify words with intial semivocalic u" in {
+    val uela = "uela"
+    val actual =  Latin23Alphabet.syllabify(uela)
+    val expected = Vector("ue","la")
+    assert( actual == expected)
   }
 
 
+  it should "correctly syllabify words with syllable-intial semivocalic u" in  {
+    val deueho = "deueho"
+    val actual =  Latin23Alphabet.syllabify(deueho)
+    val expected = Vector("de","ue","ho")
+    assert( actual == expected)
+  }
 }
