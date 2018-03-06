@@ -25,6 +25,8 @@ Syllabifying a `LatinString` creates a Vector of string values.  It's fun to use
 
 ```scala
 val syllables = latString.syllabify
+assert (syllables.size == 4)
+
 val syllabicString = syllables.mkString("-")
 assert(syllabicString == "con-uo-ca-re")
 ```
