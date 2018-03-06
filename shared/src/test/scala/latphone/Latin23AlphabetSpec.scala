@@ -96,11 +96,54 @@ class Latin23AlphabetSpec extends FlatSpec {
   }
 
 
-    it should "correctly break syllables when u combines with vowel" in {
-      val tonitrui = "tonitrui"
-      val actual =  Latin23Alphabet.syllabify(tonitrui)
-      val expected = Vector("to","ni","tru", "i")
-      assert( actual == expected)
-    }
+  it should "correctly break syllables when u combines with vowel" in {
+    val tonitrui = "tonitrui"
+    val actual =  Latin23Alphabet.syllabify(tonitrui)
+    val expected = Vector("to","ni","tru", "i")
+    assert( actual == expected)
+  }
+
+  it should "correctly syllabify words with intial semivocalic i" in {
+    val iustitia = "iustitia"
+    val actual =  Latin23Alphabet.syllabify(iustitia)
+    val expected = Vector("ius","ti","ti", "a")
+    assert( actual == expected)
+
+    val iacet = "iacet"
+    val actual2 =  Latin23Alphabet.syllabify(iacet)
+    val expected2 = Vector("ia","cet")
+    assert( actual2 == expected2)
+  }
+
+  it should "correctly syllabify words with syllable-intial semivocalic i" in {
+    // following closed syllable with liquid
+    val coniugo = "coniugo"
+    val actual =  Latin23Alphabet.syllabify(coniugo)
+    val expected = Vector("con","iu","go")
+    assert( actual == expected)
+    // following open syllable
+    val deieci = "deieci"
+    val actual2 =  Latin23Alphabet.syllabify(deieci)
+    val expected2 = Vector("de","ie","ci")
+    assert( actual2 == expected2)
+    // following closed syllable with stop
+    val iustitiam = "iustitiam"
+    val actual3 =  Latin23Alphabet.syllabify(iustitiam)
+    val expected3 = Vector("ius","ti","ti","am")
+    assert( actual3 == expected3)
+  }
+
+  it should "protect qu combination in syllabifying" in {
+    //val quae = "quae"
+    //val actual =  Latin23Alphabet.syllabify(quae)
+    val expected = Vector("quae")
+    //assert( actual == expected)
+
+    val eloquentia = "eloquentia"
+    //val actual2 =  Latin23Alphabet.syllabify(eloquentia)
+    val expected2 = Vector("e","lo","quen","ti","a")
+    //assert( actual2 == expected2)
+  }
+
 
 }

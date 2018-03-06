@@ -8,6 +8,7 @@ class LatinStringSpec extends FlatSpec {
 
   "A LatinString"  should "recognize accept valid characters" in {
     val ls = LatinString("quo usque tandem abutere patientia nostra?", Latin23Alphabet)
+    assert(true)
   }
   it should "reject invalid characters" in {
     try {
