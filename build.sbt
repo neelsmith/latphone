@@ -1,4 +1,4 @@
-name := "Latin phonlogy"
+name := "Latin phonology"
 
 crossScalaVersions := Seq("2.11.8", "2.12.3")
 scalaVersion := "2.12.3"

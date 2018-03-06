@@ -52,5 +52,55 @@ class Latin23AlphabetSpec extends FlatSpec {
   }
 
   it should "correctly break syllables on consonant clusters" in {
+    val sanctus = "sanctus"
+    val actual =  Latin23Alphabet.syllabify(sanctus)
+    val expected = Vector("sanc","tus")
+      assert( actual == expected)
   }
+
+  it should "correctly break syllables on mute+liquid combination" in {
+    val publicus = "publicus"
+    val actual =  Latin23Alphabet.syllabify(publicus)
+    val expected = Vector("pu","bli","cus")
+    assert( actual == expected)
+  }
+  it should "correctly break syllables on diphthong+vowel combination" in {
+    val aeacus = "aeacus"
+    val actual =  Latin23Alphabet.syllabify(aeacus)
+    val expected = Vector("ae","a","cus")
+    assert( actual == expected)
+  }
+
+  it should "correctly break syllables when a combines with vowel" in {
+    val laocoon = "Laocoon"
+    val actual =  Latin23Alphabet.syllabify(laocoon)
+    val expected = Vector("La","o","co", "on")
+    assert( actual == expected)
+  }
+
+  it should "correctly break syllables when e combines with vowel" in pending
+
+
+  it should "correctly break syllables when i combines with vowel" in {
+    val consilii = "consilii"
+    val actual =  Latin23Alphabet.syllabify(consilii)
+    val expected = Vector("con","si","li", "i")
+    assert( actual == expected)
+  }
+
+  it should "correctly break syllables when o combines with vowel" in {
+    val laocoon = "Laocoon"
+    val actual =  Latin23Alphabet.syllabify(laocoon)
+    val expected = Vector("La","o","co", "on")
+    assert( actual == expected)
+  }
+
+
+    it should "correctly break syllables when u combines with vowel" in {
+      val tonitrui = "tonitrui"
+      val actual =  Latin23Alphabet.syllabify(tonitrui)
+      val expected = Vector("to","ni","tru", "i")
+      assert( actual == expected)
+    }
+
 }

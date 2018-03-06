@@ -66,10 +66,10 @@ trait LatinAlphabet  {
   }
 
 
-  /** Divide a give [[LatinString]] into a Vector of
-  * String values.
+  /** Divide a given String into a Vector of
+  * Strings.
   *
-  * @param ls [[LatinString]] to syllabify.
+  * @param s String to syllabify.
   */
   def syllabify(s: String): Vector[String]
 

@@ -18,4 +18,9 @@ class LatinStringSpec extends FlatSpec {
       case t: Throwable =>fail("Should have  found IllegalArgumentException but got " + t)
     }
   }
+
+  it should "syllabify itself using its alphabet" in {
+    val ls = LatinString("quo usque tandem abutere patientia nostra?", Latin23Alphabet)
+    println(ls.syllabify.map(_.mkString("-")).mkString("\n"))
+  }
 }

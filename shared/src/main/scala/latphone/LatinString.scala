@@ -9,5 +9,7 @@ package edu.holycross.shot.latin
 case class LatinString(s: String, alpha: LatinAlphabet)  {
   require(alpha.valid(s), s"${s} is not a valid Latin string the ${alpha}")
 
+
+  def syllabify = alpha.syllabify(s)
   override def toString: String = s
 }
