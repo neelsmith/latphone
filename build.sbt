@@ -1,7 +1,7 @@
 name := "Latin phonology"
 
-crossScalaVersions := Seq("2.11.8", "2.12.3")
-scalaVersion := "2.12.3"
+crossScalaVersions in ThisBuild := Seq("2.10.6","2.11.8", "2.12.4")
+scalaVersion := (crossScalaVersions in ThisBuild).value.last
 
 lazy val root = project.in(file(".")).
     aggregate(crossedJVM, crossedJS).
@@ -33,6 +33,5 @@ lazy val crossed = crossProject.in(file(".")).
       scalaJSUseMainModuleInitializer in Compile := true
     )
 
-
 lazy val crossedJVM = crossed.jvm.enablePlugins(TutPlugin)
-lazy val crossedJS = crossed.js.enablePlugins(ScalaJSPlugin)
+lazy val crossedJS = crossed.js
