@@ -67,10 +67,16 @@ object LatinNumerics {
       case LatinNumerics.thousand => 1000
       case LatinNumerics.fiveThousand => 5000
       case LatinNumerics.tenThousand => 10000
-      //case _ => throw new Exception(s"LatinNumerics: ${c} is not a valid numeric character.")*/
+      case _ => throw new Exception(s"LatinNumerics: ${c} is not a valid numeric character.")
     }
   }
 
+
+  /** Sum up the integer values of a string of numeric characters..
+  * It is an exception if any character of s is not a numeric character.
+  *
+  * @param s String of numeric characters to sum up.
+  */
   def numericToInt(s: String, total: Int = 0) : Int = {
     if (s.size == 0) {
       total

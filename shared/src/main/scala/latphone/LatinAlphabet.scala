@@ -16,25 +16,24 @@ trait LatinAlphabet  {
 
   /** List of all allowed numeric characters. */
   def numerics: Vector[Char] = Vector(
-    '\u2160',
-    '\u2161',
-    '\u2162',
-    '\u2163',
-    '\u2164',
-    '\u2165',
-    '\u2166',
-    '\u2167',
-    '\u2168',
-    '\u2169',
-
-    '\u216C',
-    '\u216D',
-    '\u216E',
-    '\u216F',
-
-    '\u2181',
-    '\u2182'
+    LatinNumerics.one,
+    LatinNumerics.two,
+    LatinNumerics.three,
+    LatinNumerics.four,
+    LatinNumerics.five,
+    LatinNumerics.six,
+    LatinNumerics.seven,
+    LatinNumerics.eight,
+    LatinNumerics.nine,
+    LatinNumerics.ten,
+    LatinNumerics.fifty,
+    LatinNumerics.hundred,
+    LatinNumerics.fiveHundred,
+    LatinNumerics.thousand,
+    LatinNumerics.fiveThousand,
+    LatinNumerics.tenThousand
   )
+
   /** True if s is composed only of numeric characters.
   *
   * @param s String to check.
@@ -45,37 +44,6 @@ trait LatinAlphabet  {
     }
     true
   }
-
-
-
-
-  /** Sum up the integer values of a string of numeric characters..
-  * It is an exception if any character of s is not a numeric character.
-  *
-  * @param s String of numeric characters to sum up.
-  */
-
-  /*
-  def numericToInt(s: String, total : Int = 0) : Int = {
-    val forty = "\u2169\u216C"
-    val ninety = "\u2169\u216D"
-
-    if (s.size == 0) {
-      total
-    } else if (s.contains(forty)) {
-      numericToInt(s.replaceFirst(forty,""), total + 40)
-    } else if (s.contains(ninety)){
-      numericToInt(s.replaceFirst(ninety,""), total + 90)
-    } else if (s.size == 1) {
-      total + numericToInt(s.head)
-
-    } else {
-      val subTotal = total + numericToInt(s.head)
-      numericToInt(s.tail, subTotal)
-    }
-
-  }
-*/
 
   /** Set of allowed diphthongs.*/
   def diphthongs: Set[String]
