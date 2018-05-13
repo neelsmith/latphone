@@ -26,13 +26,12 @@ trait LatinAlphabet  {
     '\u2167',
     '\u2168',
     '\u2169',
-    '\u216A',
-    '\u216B',
+
     '\u216C',
     '\u216D',
     '\u216E',
     '\u216F',
-    '\u2180',
+
     '\u2181',
     '\u2182'
   )
@@ -47,7 +46,58 @@ trait LatinAlphabet  {
     true
   }
 
+  /** Convert numeric character to corresponding integer value.
+  * It is an exception if c is not a numeric character.
+  *
+  * @param c Numeric character to convert.
+  */
+  def numericToInt(c: Char) : Int = {
+     c match {
+      case '\u2160' => 1
+      case '\u2161' => 2
+      case '\u2162' => 3
+      case '\u2163' => 4
+      case '\u2164' => 5
+      case '\u2165' => 6
+      case '\u2166' => 7
+      case '\u2167' => 8
+      case '\u2168' => 9
+      case '\u2169' => 10
+      case '\u216C' => 50
+      case '\u216D' => 100
+      case '\u216E' => 500
+      case '\u216F' => 1000
+      case '\u2181' => 5000
+      case '\u2182' => 10000
+      case _ => throw new Exception(s"LatinAlphabet: ${c} is not a valid numeric character.")
+    }
+  }
 
+
+  /** Sum up the integer values of a string of numeric characters..
+  * It is an exception if any character of s is not a numeric character.
+  *
+  * @param s String of numeric characters to sum up.
+  */
+  def numericToInt(s: String, total : Int = 0) : Int = {
+    val forty = "\u2169\u216C"
+    val ninety = "\u2169\u216D"
+
+    if (s.size == 0) {
+      total
+    } else if (s.contains(forty)) {
+      numericToInt(s.replaceFirst(forty,""), total + 40)
+    } else if (s.contains(ninety)){
+      numericToInt(s.replaceFirst(ninety,""), total + 90)
+    } else if (s.size == 1) {
+      total + numericToInt(s.head)
+
+    } else {
+      val subTotal = total + numericToInt(s.head)
+      numericToInt(s.tail, subTotal)
+    }
+
+  }
 
 
   /** Set of allowed diphthongs.*/
