@@ -14,6 +14,42 @@ trait LatinAlphabet  {
   /** List of all allowed punctuation characters. */
   def punctuationString: String
 
+  /** List of all allowed numeric characters. */
+  def numerics: Vector[Char] = Vector(
+    '\u2160',
+    '\u2161',
+    '\u2162',
+    '\u2163',
+    '\u2164',
+    '\u2165',
+    '\u2166',
+    '\u2167',
+    '\u2168',
+    '\u2169',
+    '\u216A',
+    '\u216B',
+    '\u216C',
+    '\u216D',
+    '\u216E',
+    '\u216F',
+    '\u2180',
+    '\u2181',
+    '\u2182'
+  )
+  /** True if s is composed only of numeric characters.
+  *
+  * @param s String to check.
+  */
+  def numeric(s: String) : Boolean = {
+    for (c <- s) {
+      require(numerics.contains(c.toUpper), s"${c} is not a numeric character.")
+    }
+    true
+  }
+
+
+
+
   /** Set of allowed diphthongs.*/
   def diphthongs: Set[String]
 
@@ -29,6 +65,7 @@ trait LatinAlphabet  {
 
   /** Possiby empty set of semivowels.*/
   def semivowels: Set[String]
+
   /** True if s is a semivowel.
   *
   * @param s String to check.
@@ -53,7 +90,7 @@ trait LatinAlphabet  {
   * @param c Character to check.
   */
   def  valid(c: Char): Boolean = {
-    (alphabetString.contains(c.toLower) || punctuationString.contains(c.toLower))
+    (alphabetString.contains(c.toLower) || punctuationString.contains(c.toLower) || numerics.contains(c.toUpper) )
   }
 
   /** True if a given string is valid in this alphabet.

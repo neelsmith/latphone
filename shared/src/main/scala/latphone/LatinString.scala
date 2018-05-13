@@ -9,7 +9,17 @@ package edu.holycross.shot.latin
 case class LatinString(s: String, alpha: LatinAlphabet)  {
   require(alpha.valid(s), s"${s} is not a valid Latin string the ${alpha}")
 
-
   def syllabify = alpha.syllabify(s)
   override def toString: String = s
+
+  def size: Int = s.size
+
+
+  /** Convert a numeric token to an integer value.
+  * It is an error if [[s]] is not a numeric token
+  */
+  def toInt: Int = {
+    0
+  }
+
 }
