@@ -6,11 +6,21 @@ import org.scalatest.FlatSpec
 
 class LatinNumericSpec extends FlatSpec {
 
+  val fourteen = s"${LatinNumerics.ten}${LatinNumerics.four}"
 
-  val fourteen = "\u2169\u2163"
-  val forty  = "\u2169\u216C"
-  val ninety = "\u2169\u216D"
+  "The LatinNumerics object" should "accept an empty string as a valid sequence" in {
+    assert(LatinNumerics.valid(""))
+  }
 
+  it should "accept values decreasing in size" in {
+    val onehundred11 = s"${LatinNumerics.hundred}${LatinNumerics.ten}${LatinNumerics.one}"
+    println("Testing " + onehundred11)
+    assert(LatinNumerics.valid(onehundred11))
+
+  }
+
+
+  // Change to validate withg LatinNumerics!
   "A LatinAlphabet" should "recognize numeric characters as valid" in {
     assert (Latin23Alphabet.numeric(fourteen))
   }
@@ -31,15 +41,20 @@ class LatinNumericSpec extends FlatSpec {
 
   it should "convert individual numeric chars to integer values"  in {
     val ten = '\u2169'
-    assert(Latin23Alphabet.numericToInt(ten) == 10)
+    assert(LatinNumerics.numericToInt(ten) == 10)
   }
 
   it should "convert strings of numeric chars to integer values" in {
-    assert(Latin23Alphabet.numericToInt(fourteen) == 14)
+    assert(LatinNumerics.numericToInt(fourteen) == 14)
   }
-  it should "recognize subtractrive patterns for 40 and 90" in {
-    assert(Latin23Alphabet.numericToInt(forty) == 40)
-    assert(Latin23Alphabet.numericToInt(ninety) == 90)
+  it should "recognize subtractive patterns for 40 and 90" in {
+    assert(LatinNumerics.numericToInt(LatinNumerics.forty) == 40)
+    assert(LatinNumerics.numericToInt(LatinNumerics.ninety) == 90)
+  }
+
+  it should "recognize subtractive patterns combined with other characrters" in {
+    val fortyone = s"${LatinNumerics.forty}${LatinNumerics.one}"
+    assert (LatinNumerics.numericToInt(fortyone) == 41)
   }
 
 
