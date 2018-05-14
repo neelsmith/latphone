@@ -67,7 +67,8 @@ object LatinNumerics {
     if (s.size < 2) {
       false
     } else {
-      subtractives.contains(s.slice(1,3))
+
+      subtractives.contains(s.slice(0,2))
     }
   }
 
@@ -79,6 +80,67 @@ object LatinNumerics {
   */
   def valid(src: String, cumulation: String = "", lastSeen: Int = 0): Boolean = {
     println(s"VALIDATING ${src}, ${cumulation}, ${lastSeen}")
+      src.size match {
+        case 0  => true
+        case _ => {
+          println("WORK ON  " + src + " and lastSeen " + lastSeen)
+          if (subtractive(src)) {
+            val sliver = src.slice(0,2)
+            println("Continue subtractive with " + sliver)
+            valid(src.tail.tail, cumulation + sliver, lastSeen + numericToInt(sliver))
+
+          } else if (lastSeen == 0) {
+            println(s"Continue ... ${src.tail}, ${cumulation + src.head}, ${lastSeen + numericToInt(src.head)}")
+            valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
+
+          } else {
+            println("Match lastSeen " + lastSeen)
+            lastSeen match {
+              case thou if (thou % 1000 == 0) => {
+                println("It's a tnousand!")
+                false
+              }
+              case hund if (hund % 100 == 0)=> {
+                println("Hundred!")
+                false
+              }
+              case ten if (ten % 10 == 0)=> {
+
+                val  nextDigit =  numericToInt(src.head)
+                  println("Ten! with next digit " + nextDigit)
+                nextDigit match {
+                  case ones if 1 to 9 contains ones =>
+                  valid(src.tail, cumulation + src.head, numericToInt(src.head))
+
+                  case 10 => {
+                    println("next char is ten")
+                    val additiveTens = Vector(10,20,30,50,60,70,80)
+                    if (additiveTens.contains(LatinNumerics.numericToInt(cumulation + src.head))) {
+                      val newTotal = LatinNumerics.numericToInt(cumulation + src.head)
+                      println(s"and ${newTotal} is in additive tens...")
+                      valid(src.tail, cumulation + src.head, numericToInt(src.head))
+                    } else { false }
+                  }
+
+                  case _ => false
+                }
+              /*  if (numericToInt(src.head) <= 10) {
+                  valid(src.tail, cumulation + src.head, numericToInt(src.head))
+
+                } else {
+                  false
+                }*/
+
+              }
+              case i: Int => {
+                println("=>NOT HANDLED: " + i)
+                false
+              }
+            }
+          }
+        }
+      }
+    /*
     src.size match {
       case 0  => true
 
@@ -87,8 +149,9 @@ object LatinNumerics {
 
         if (subtractive(src)) {
             println("Continue subtractive.")
+            val sliver = src.slice(0,2)
+            valid(src.tail.tail, cumulation + sliver, lastSeen + numericToInt(sliver))
 
-            false
         } else if (lastSeen == 0) {
           println(s"Continue ... ${src.tail}, ${cumulation + src.head}, ${lastSeen + numericToInt(src.head)}")
           valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
@@ -108,7 +171,8 @@ object LatinNumerics {
                 false
               }
             }
-            case toptens if 50 to 88 contains toptens => {
+
+            case toptens if 40 to 88 contains toptens => {
               if ((numericToInt(cumulation) + numericToInt(src.head)) < 90){
                 valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
               } else {
@@ -151,7 +215,7 @@ object LatinNumerics {
           }
         }
       }
-    }
+    } */
   }
 
 

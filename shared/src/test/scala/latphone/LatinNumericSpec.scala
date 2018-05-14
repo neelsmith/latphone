@@ -11,10 +11,9 @@ class LatinNumericSpec extends FlatSpec {
   "The LatinNumerics object" should "accept an empty string as a valid sequence" in {
     assert(LatinNumerics.valid(""))
   }
-  it should "itnerpret an empty string as numeric zero" in {
+  it should "interpret an empty string as numeric zero" in {
     assert(LatinNumerics.numericToInt("") == 0)
   }
-
 
   it should "accept values from ten to 20 when digits decrease in size" in  {
     assert(LatinNumerics.valid(fourteen))
@@ -32,16 +31,16 @@ class LatinNumericSpec extends FlatSpec {
     assert(LatinNumerics.valid(s"${LatinNumerics.ten}"))
     assert(LatinNumerics.valid(s"${LatinNumerics.ten}${LatinNumerics.ten}"))
   }
-  it should "accept subtractive values for 40" in pending
+  
   it should "accept subtractive values for 90" in pending
 
-  it should "accept values from 100 to 1000 when digits decrease in size" in  {
+  it should "accept values from 100 to 1000 when digits decrease in size" in  pending /*{
     val fivehundred11 = s"${LatinNumerics.fiveHundred}${LatinNumerics.ten}${LatinNumerics.one}"
     assert(LatinNumerics.valid(fivehundred11))
 
     val thousand111 = s"${LatinNumerics.thousand}${LatinNumerics.hundred}${LatinNumerics.ten}${LatinNumerics.one}"
     assert(LatinNumerics.valid(thousand111))
-  }
+  }*/
   it should "accept duplicated ten values for 200, 300, 700 and 800" in pending
   it should "accept subtractive values for 400" in pending
   it should "accept subtractive values for 900" in pending
