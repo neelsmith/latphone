@@ -54,50 +54,54 @@ object LatinNumerics {
     println(s"VALIDATING ${src}, ${cumulation}, ${lastSeen}")
     src.size match {
       case 0  => true
-      //case 1 =>  {(lastSeen == 0) || (lastSeen > numericToInt(src.head))}
+
       case _ => {
         println("WORK ON  " + src + " and lastSeen " + lastSeen)
-        if ((lastSeen == 0) || (lastSeen > numericToInt(src.head))) {
-          println(s"Continue ... ${src.tail}, ${cumulation + src.head}, ${numericToInt(src.head)}")
+
+        if (lastSeen == 0) {// || (lastSeen > numericToInt(src.head))) {
+          println(s"Continue ... ${src.tail}, ${cumulation + src.head}, ${lastSeen + numericToInt(src.head)}")
 
 
 
-          valid(src.tail, cumulation + src.head, numericToInt(src.head))
+          valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
         } else {
+          println("Match lastSeen " + lastSeen)
           lastSeen match {
 
             case i if 0 to 9 contains i => if (lastSeen > 9) {
               valid(src.tail, cumulation + src.head, numericToInt(src.head))
             } else { false }
-            case 10 => {
+            case tens if List(10, 20, 30).contains(tens) => {
               if ((numericToInt(cumulation) + numericToInt(src.head)) < 40){
-                valid(src.tail, cumulation + src.head, numericToInt(src.head))
+                valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
               } else {
                 false
               }
             }
-            case 50 => {
-              println(s"Looking at ${src}, ${cumulation}, ${lastSeen}")
+            case toptens if 50 to 80 contains toptens => {
               if ((numericToInt(cumulation) + numericToInt(src.head)) < 90){
-                valid(src.tail, cumulation + src.head, numericToInt(src.head))
+                valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
               } else {
                 false
               }
             }
-            case 100 => {
-              if ((numericToInt(cumulation) + numericToInt(src.head)) < 90){
-                valid(src.tail, cumulation + src.head, numericToInt(src.head))
+            case hundreds if 100 to 300 contains(hundreds) => {
+              if ((numericToInt(cumulation) + numericToInt(src.head)) < 400){
+                valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
               } else {
                 false
               }
             }
-            case 500 => {
+            case tophundreds if List(500, 600, 700, 800).contains(tophundreds)=> {
               if ((numericToInt(cumulation) + numericToInt(src.head)) < 900){
-                valid(src.tail, cumulation + src.head, numericToInt(src.head))
+                valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
               } else {
                 false
               }
             }
+            /*()
+
+
             case 1000 => {
               if ((numericToInt(cumulation) + numericToInt(src.head)) < 4000){
                 valid(src.tail, cumulation + src.head, numericToInt(src.head))
@@ -113,6 +117,7 @@ object LatinNumerics {
               }
             }
             case 10000 => {false}
+            */
           }
         }
       }
