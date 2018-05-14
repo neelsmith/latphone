@@ -5,9 +5,9 @@
 permalink:        pretty
 
 # Setup
-title:            Latin phonology
-tagline:          'Work with phonology of texts in Latin'
-description:      'A library for working texts in Latin phonologically'
+title:            Latin orthography and phonology
+tagline:          'Work with texts in Latin'
+description:      'A library for working phonologically with texts in a specified Latin orthography'
 
 
 baseurl: '/latphone/'
