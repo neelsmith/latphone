@@ -28,7 +28,10 @@ class LatinNumericSpec extends FlatSpec {
     val onehundred11 = s"${LatinNumerics.hundred}${LatinNumerics.ten}${LatinNumerics.one}"
     assert(LatinNumerics.valid(onehundred11))
   }
-  it should "accept duplicated ten values for 20, 30, 70 and 80" in pending
+  it should "accept duplicated ten values for 20, 30, 70 and 80" in {
+    assert(LatinNumerics.valid(s"${LatinNumerics.ten}"))
+    assert(LatinNumerics.valid(s"${LatinNumerics.ten}${LatinNumerics.ten}"))
+  }
   it should "accept subtractive values for 40" in pending
   it should "accept subtractive values for 90" in pending
 
