@@ -34,14 +34,55 @@ object LatinNumerics {
   * @param s String to evaluate.
   * @param lastSeen Integer value of last character seen.
   */
-  def valid(s: String, lastSeen: Int = 0): Boolean = {
-    if (s.size == 0) {
-      true
-    } else {
+  def valid(src: String, cumulation: String = "", lastSeen: Int = 0): Boolean = {
 
-      false
+
+    src.size match {
+      case 0  => true
+      case 1 =>  {(lastSeen == 0) || (lastSeen > numericToInt(src.head))}
+      case 2 => {
+        // lastSeen would be 0 if initially only 2-digit number submitted
+        if ((lastSeen == 0) || (lastSeen > numericToInt(src.head))) {
+          valid(src.tail, cumulation + src.head, numericToInt(src.head))
+        } else { false}
+      }
+      case _ => false
     }
   }
+    /*
+    case 1 =>  (lastSeen == 0) || (lastSeen >  numericToInt(src.head))
+    case _ => {
+      //val prevDigit =
+      false
+    }
+
+    // Multipe charaters to evaluate:
+    } else {
+      lastSeen match {
+
+        case i if 0 to 9 contains i => (lastSeen > 10)
+        case 10 => {false}
+        case 50 => {false}
+        case 100 => {false}
+        case 500 => {false}
+        case 1000 => {false}
+        case 5000 => {false}
+        case 10000 => {false}
+      }
+    }*/
+
+
+
+/*
+    } else if (lastSeen == 0) {
+      valid(s.tail, numericToInt(s.head))
+
+    } else {
+      val currCharVal = numericToInt(s.head)
+      println("currCharVal == " + currCharVal)
+      false
+    }*/
+
 
 
   /** Convert numeric character to corresponding integer value.
@@ -70,7 +111,6 @@ object LatinNumerics {
       case _ => throw new Exception(s"LatinNumerics: ${c} is not a valid numeric character.")
     }
   }
-
 
   /** Sum up the integer values of a string of numeric characters..
   * It is an exception if any character of s is not a numeric character.
