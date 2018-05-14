@@ -35,18 +35,26 @@ object LatinNumerics {
   * @param lastSeen Integer value of last character seen.
   */
   def valid(src: String, cumulation: String = "", lastSeen: Int = 0): Boolean = {
-
-
     src.size match {
       case 0  => true
       case 1 =>  {(lastSeen == 0) || (lastSeen > numericToInt(src.head))}
-      case 2 => {
-        // lastSeen would be 0 if initially only 2-digit number submitted
+      case _ => {
         if ((lastSeen == 0) || (lastSeen > numericToInt(src.head))) {
           valid(src.tail, cumulation + src.head, numericToInt(src.head))
-        } else { false}
+        } else {
+          lastSeen match {
+
+            case i if 0 to 9 contains i => (lastSeen > 10)
+            case 10 => {false}
+            case 50 => {false}
+            case 100 => {false}
+            case 500 => {false}
+            case 1000 => {false}
+            case 5000 => {false}
+            case 10000 => {false}
+          }
+        }
       }
-      case _ => false
     }
   }
     /*
