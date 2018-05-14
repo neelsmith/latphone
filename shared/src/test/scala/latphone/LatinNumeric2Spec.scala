@@ -53,6 +53,12 @@ class LatinNumeric2Spec extends FlatSpec {
     val badForty = s"${LatinNumerics.ten}${LatinNumerics.ten}${LatinNumerics.ten}${LatinNumerics.ten}"
     assert(LatinNumerics.valid(badForty) == false)
     assert(LatinNumerics.numericToInt(badForty) == 40)
+
+
+
+    val badFortyTwo = s"${LatinNumerics.ten}${LatinNumerics.ten}${LatinNumerics.ten}${LatinNumerics.ten}${LatinNumerics.two}"
+    assert(LatinNumerics.valid(badFortyTwo) == false)
+    assert(LatinNumerics.numericToInt(badFortyTwo) == 42)
   }
 
   it should "recognize even hundreds" in {
@@ -60,5 +66,17 @@ class LatinNumeric2Spec extends FlatSpec {
       assert(LatinNumerics.valid(threeHundred))
       assert(LatinNumerics.numericToInt(threeHundred) == 300)
   }
+
+
+  it should "recognize extensions of even hundreds" in {
+      val threeOhOne = s"${LatinNumerics.hundred}${LatinNumerics.hundred}${LatinNumerics.hundred}${LatinNumerics.one}"
+      assert(LatinNumerics.valid(threeOhOne))
+      assert(LatinNumerics.numericToInt(threeOhOne) == 301)
+
+      val threeEleven = s"${LatinNumerics.hundred}${LatinNumerics.hundred}${LatinNumerics.hundred}${LatinNumerics.ten}${LatinNumerics.one}"
+      assert(LatinNumerics.valid(threeEleven))
+      assert(LatinNumerics.numericToInt(threeEleven) == 311)
+  }
+
 
 }
