@@ -1,5 +1,5 @@
 # `latphone`
 
-In development: a Latin phonology library.
+In development: a library for Latin orthography and phonology.
 
 Web site:  <https://neelsmith.github.io/latphone/>.

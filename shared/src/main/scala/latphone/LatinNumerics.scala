@@ -59,6 +59,9 @@ object LatinNumerics {
         println("WORK ON  " + src + " and lastSeen " + lastSeen)
         if ((lastSeen == 0) || (lastSeen > numericToInt(src.head))) {
           println(s"Continue ... ${src.tail}, ${cumulation + src.head}, ${numericToInt(src.head)}")
+
+
+
           valid(src.tail, cumulation + src.head, numericToInt(src.head))
         } else {
           lastSeen match {
@@ -67,42 +70,43 @@ object LatinNumerics {
               valid(src.tail, cumulation + src.head, numericToInt(src.head))
             } else { false }
             case 10 => {
-              if ((lastSeen + numericToInt(src.head)) < 40){
+              if ((numericToInt(cumulation) + numericToInt(src.head)) < 40){
                 valid(src.tail, cumulation + src.head, numericToInt(src.head))
               } else {
                 false
               }
             }
             case 50 => {
-              if ((lastSeen + numericToInt(src.head)) < 90){
+              println(s"Looking at ${src}, ${cumulation}, ${lastSeen}")
+              if ((numericToInt(cumulation) + numericToInt(src.head)) < 90){
                 valid(src.tail, cumulation + src.head, numericToInt(src.head))
               } else {
                 false
               }
             }
             case 100 => {
-              if ((lastSeen + numericToInt(src.head)) < 90){
+              if ((numericToInt(cumulation) + numericToInt(src.head)) < 90){
                 valid(src.tail, cumulation + src.head, numericToInt(src.head))
               } else {
                 false
               }
             }
             case 500 => {
-              if ((lastSeen + numericToInt(src.head)) < 900){
+              if ((numericToInt(cumulation) + numericToInt(src.head)) < 900){
                 valid(src.tail, cumulation + src.head, numericToInt(src.head))
               } else {
                 false
               }
             }
             case 1000 => {
-              if ((lastSeen + numericToInt(src.head)) < 4000){
+              if ((numericToInt(cumulation) + numericToInt(src.head)) < 4000){
                 valid(src.tail, cumulation + src.head, numericToInt(src.head))
               } else {
                 false
               }
             }
             case 5000 => {
-              if ((lastSeen + numericToInt(src.head)) < 9000){
+              if ((numericToInt(cumulation) + numericToInt(src.head)) < 9000){
                 valid(src.tail, cumulation + src.head, numericToInt(src.head))
               } else {
                 false
