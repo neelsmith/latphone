@@ -44,6 +44,33 @@ object LatinNumerics {
   /** Subtractive string for Roman numeral 90 */
   val ninety = s"${ten}${hundred}"
 
+  /** Subtractive string for Roman numeral 400 */
+  val fourHundred = s"${hundred}${fiveHundred}"
+  /** Subtractive string for Roman numeral 900 */
+  val nineHundred = s"${hundred}${thousand}"
+
+
+  /** Subtractive pairs.
+  */
+  val subtractives: Vector[String] = Vector(
+    forty,
+    ninety,
+    fourHundred,
+    nineHundred
+  )
+
+  /** True if string begins with a subtractive sequence.
+  *
+  * @param s String to check.
+  */
+  def subtractive(s: String): Boolean = {
+    if (s.size < 2) {
+      false
+    } else {
+      subtractives.contains(s.slice(1,3))
+    }
+  }
+
   /** Determine if a string of numeric characters obeys rules
   * of sequence.
   *
@@ -58,12 +85,14 @@ object LatinNumerics {
       case _ => {
         println("WORK ON  " + src + " and lastSeen " + lastSeen)
 
-        if (lastSeen == 0) {// || (lastSeen > numericToInt(src.head))) {
+        if (subtractive(src)) {
+            println("Continue subtractive.")
+
+            false
+        } else if (lastSeen == 0) {
           println(s"Continue ... ${src.tail}, ${cumulation + src.head}, ${lastSeen + numericToInt(src.head)}")
-
-
-
           valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
+
         } else {
           println("Match lastSeen " + lastSeen)
           lastSeen match {
@@ -71,14 +100,15 @@ object LatinNumerics {
             case i if 0 to 9 contains i => if (lastSeen > 9) {
               valid(src.tail, cumulation + src.head, numericToInt(src.head))
             } else { false }
-            case tens if List(10, 20, 30).contains(tens) => {
+
+            case tens if 10 to 38 contains(tens) => {
               if ((numericToInt(cumulation) + numericToInt(src.head)) < 40){
                 valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
               } else {
                 false
               }
             }
-            case toptens if 50 to 80 contains toptens => {
+            case toptens if 50 to 88 contains toptens => {
               if ((numericToInt(cumulation) + numericToInt(src.head)) < 90){
                 valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
               } else {
@@ -92,7 +122,7 @@ object LatinNumerics {
                 false
               }
             }
-            case tophundreds if List(500, 600, 700, 800).contains(tophundreds)=> {
+            case tophundreds if 500 to 898 contains(tophundreds)=> {
               if ((numericToInt(cumulation) + numericToInt(src.head)) < 900){
                 valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
               } else {
