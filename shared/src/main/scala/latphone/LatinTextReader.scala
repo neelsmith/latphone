@@ -1,11 +1,12 @@
-package edu.holycross.shot.latphone
+package edu.holycross.shot.latin
 
+import edu.holycross.shot.ohco2._
 
 /**
 */
 object LatinTextReader {
 
-  def fromString(s: String): Vector[Option[LatinToken]] = {
+  def fromCorpus(corpus: Corpus, alphabet:  LatinAlphabet): Vector[Option[LatinToken]] = {
     Vector.empty
   }
 }

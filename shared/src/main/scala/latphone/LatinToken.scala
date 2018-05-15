@@ -1,4 +1,4 @@
-package edu.holycross.shot.latphone
+package edu.holycross.shot.latin
 
 import edu.holycross.shot.cite._
 

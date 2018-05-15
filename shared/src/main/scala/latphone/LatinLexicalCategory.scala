@@ -1,4 +1,4 @@
-package edu.holycross.shot.latphone
+package edu.holycross.shot.latin
 
 /** All possible lexical categories for a token
 * are enumerated by case objects extending this trait
