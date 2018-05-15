@@ -12,7 +12,7 @@ class LatinNumeric2Spec extends FlatSpec {
     assert(LatinNumerics.numericToInt("") == 0)
   }
 
-  it should "accept any single digitl as a valid sequence" in {
+  it should "accept any single digit as a valid sequence" in {
     assert(LatinNumerics.valid(s"${LatinNumerics.two}"))
     assert(LatinNumerics.valid(s"${LatinNumerics.thousand}"))
   }
@@ -27,7 +27,7 @@ class LatinNumeric2Spec extends FlatSpec {
     assert(LatinNumerics.numericToInt(ninety) == 90)
   }
 
-  it should "recognize extensions of subtractive combinations" in {
+  it should "recognize extensions of subtractive combinations of 40 or 90" in {
     val fortyTwo = s"${LatinNumerics.ten}${LatinNumerics.fifty}${LatinNumerics.two}"
     assert(LatinNumerics.valid(fortyTwo))
     assert(LatinNumerics.numericToInt(fortyTwo) == 42)
@@ -54,8 +54,6 @@ class LatinNumeric2Spec extends FlatSpec {
     assert(LatinNumerics.valid(badForty) == false)
     assert(LatinNumerics.numericToInt(badForty) == 40)
 
-
-
     val badFortyTwo = s"${LatinNumerics.ten}${LatinNumerics.ten}${LatinNumerics.ten}${LatinNumerics.ten}${LatinNumerics.two}"
     assert(LatinNumerics.valid(badFortyTwo) == false)
     assert(LatinNumerics.numericToInt(badFortyTwo) == 42)
@@ -78,5 +76,21 @@ class LatinNumeric2Spec extends FlatSpec {
       assert(LatinNumerics.numericToInt(threeEleven) == 311)
   }
 
+  it should "recognize a subtractive combination of 400 or 900" in {
+    assert(LatinNumerics.valid(LatinNumerics.fourHundred))
+    assert(LatinNumerics.numericToInt(LatinNumerics.fourHundred) == 400)
 
+    assert(LatinNumerics.valid(LatinNumerics.nineHundred))
+    assert(LatinNumerics.numericToInt(LatinNumerics.nineHundred) == 900)
+  }
+
+  it should "recognize extensions of subtractive combinations of 400 or 900" in {
+    val fourOhTwo = s"${LatinNumerics.hundred}${LatinNumerics.fiveHundred}${LatinNumerics.two}"
+    //assert(LatinNumerics.valid(fourOhTwo))
+    //assert(LatinNumerics.numericToInt(fourOhTwo) == 402)
+
+    val fourFourtyFive = s"${LatinNumerics.hundred}${LatinNumerics.fiveHundred}${LatinNumerics.ten}${LatinNumerics.fifty}${LatinNumerics.five}"
+    assert(LatinNumerics.valid(fourFourtyFive))
+    assert(LatinNumerics.numericToInt(fourFourtyFive) == 445)
+  }
 }

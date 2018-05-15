@@ -59,7 +59,14 @@ object LatinNumerics {
     nineHundred
   )
 
+  /** Tens values formed by additive concatenation of numeric
+  * characters.
+  */
   val additiveTens = Vector(10,20,30,50,60,70,80)
+
+  /** Hundreds values formed by additive concatenation of numeric
+  * characters.
+  */
   val additiveHundreds = Vector(100,200,300,500,600,700,800)
 
   /** True if string begins with a subtractive sequence.
@@ -183,10 +190,15 @@ object LatinNumerics {
       numericToInt(s.replaceFirst(LatinNumerics.forty,""), total + 40)
     } else if (s.contains(LatinNumerics.ninety)){
       numericToInt(s.replaceFirst(LatinNumerics.ninety,""), total + 90)
+    } else if (s.contains(LatinNumerics.fourHundred)) {
+      numericToInt(s.replaceFirst(LatinNumerics.fourHundred,""), total + 400)
+    } else if (s.contains(LatinNumerics.nineHundred)) {
+      numericToInt(s.replaceFirst(LatinNumerics.nineHundred,""), total + 900)
     } else if (s.size == 1) {
       total + numericToInt(s.head)
 
     } else {
+
       val subTotal = total + numericToInt(s.head)
       numericToInt(s.tail, subTotal)
     }
