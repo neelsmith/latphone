@@ -49,6 +49,11 @@ object LatinNumerics {
   /** Subtractive string for Roman numeral 900 */
   val nineHundred = s"${hundred}${thousand}"
 
+  /** Subtractive string for Roman numeral 400 */
+  val fourThousand = s"${thousand}${fiveThousand}"
+  /** Subtractive string for Roman numeral 900 */
+  val nineThousand = s"${thousand}${tenThousand}"
+
 
   /** Subtractive pairs.
   */
@@ -56,7 +61,9 @@ object LatinNumerics {
     forty,
     ninety,
     fourHundred,
-    nineHundred
+    nineHundred,
+    fourThousand,
+    nineThousand
   )
 
   /** Tens values formed by additive concatenation of numeric
@@ -68,6 +75,13 @@ object LatinNumerics {
   * characters.
   */
   val additiveHundreds = Vector(100,200,300,500,600,700,800)
+
+
+  /** Thousands values formed by additive concatenation of numeric
+  * characters.
+  */
+  val additiveThousands = Vector(1000,2000,3000,5000,6000,7000,8000)
+
 
   /** True if string begins with a subtractive sequence.
   *
@@ -88,14 +102,16 @@ object LatinNumerics {
   * @param lastSeen Integer value of last character seen.
   */
   def valid(src: String, cumulation: String = "", lastSeen: Int = 0): Boolean = {
-    println(s"VALIDATING ${src}, ${cumulation}, ${lastSeen}")
+    println(s"VALIDATING ${src}, ${cumulation}, ${lastSeen} (size ${src.size})")
       src.size match {
-        case 0  => true
+        case 0  => {
+          println("So obviously true: go home.")
+          true
+        }
         case _ => {
           println("WORK ON  " + src + " and lastSeen " + lastSeen)
           if (subtractive(src)) {
             val sliver = src.slice(0,2)
-            //println("Continue subtractive with " + sliver)
             valid(src.tail.tail, cumulation + sliver, lastSeen + numericToInt(sliver))
 
           } else if (lastSeen == 0) {
@@ -104,17 +120,30 @@ object LatinNumerics {
           } else {
             println("Match lastSeen " + lastSeen)
             lastSeen match {
+
               case thou if (thou % 1000 == 0) => {
-                println("It's a thousand!")
-                false
+                val  nextDigit =  numericToInt(src.head)
+                println("Thousand! with next digit " + nextDigit)
+                nextDigit match {
+                  case ones if 1 to 9 contains ones =>  valid(src.tail, cumulation + src.head, numericToInt(src.head))
+
+                  case tens if additiveTens.contains(tens) =>  valid(src.tail, cumulation + src.head, numericToInt(src.head))
+
+                  case hundreds if additiveHundreds.contains(LatinNumerics.numericToInt(cumulation + src.head)) =>  valid(src.tail, cumulation + src.head, numericToInt(src.head))
+
+                  case thousands if additiveThousands.contains(LatinNumerics.numericToInt(cumulation + src.head)) =>  valid(src.tail, cumulation + src.head, numericToInt(src.head))
+
+                  case _ => false
+                }
               }
+
               case hund if (hund % 100 == 0)=> {
                 val  nextDigit =  numericToInt(src.head)
                 println("Hundred! with next digit " + nextDigit)
                 nextDigit match {
                   case ones if 1 to 9 contains ones =>  valid(src.tail, cumulation + src.head, numericToInt(src.head))
                   case tens if additiveTens.contains(tens) =>  valid(src.tail, cumulation + src.head, numericToInt(src.head))
-                  case hundreds if additiveHundreds.contains(hundreds) =>  valid(src.tail, cumulation + src.head, numericToInt(src.head))
+                  case hundreds if additiveHundreds.contains(LatinNumerics.numericToInt(cumulation + src.head)) =>  valid(src.tail, cumulation + src.head, numericToInt(src.head))
                   case _ => false
                 }
               }
