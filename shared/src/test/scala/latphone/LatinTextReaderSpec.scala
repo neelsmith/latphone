@@ -6,6 +6,12 @@ import edu.holycross.shot.ohco2._
 
 class LatinTextReaderSpec extends FlatSpec {
 
+val livyTiny = """#!ctscatalog
+urn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online#lang
+urn:cts:omar:stoa0179.stoa001.omar:#book,chapter,section#Livy#History of Rome#omar edition##true#lat
+#!ctsdata
+urn:cts:omar:stoa0179.stoa001.omar:2.8.4#creatus Sp. Lucretius consul,
+"""
 val livyTwoEightFour = """#!ctscatalog
 urn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online#lang
 urn:cts:omar:stoa0179.stoa001.omar:#book,chapter,section#Livy#History of Rome#omar edition##true#lat
@@ -60,6 +66,10 @@ e pastoribusque rapta dividere et cum his crescente in dies grege iuvenum seria\
     assert (LatinTextReader.lexicalCategory(seventeen, Latin24Alphabet) == NumericToken)
   }
 
+  it should "be case-insensitive" in {
+    assert (LatinTextReader.lexicalCategory("Lucretius", Latin24Alphabet) == LexicalToken)
+  }
+
   it should "reject tokens with mixed character types" in {
     // no good!  Alphabetic "X" with numeric seven!
     val mixedAlphaNum = "XⅧ	"
@@ -68,6 +78,12 @@ e pastoribusque rapta dividere et cum his crescente in dies grege iuvenum seria\
     // numeric ten with alphabetic "VII"
     val mixedNumAlph = "ⅩVII"
     assert (LatinTextReader.lexicalCategory(mixedNumAlph, Latin24Alphabet) == InvalidToken)
+  }
+
+  it should "generate a vector of tokens from a citable node" in {
+    val corpus = TextRepository(livyTiny).corpus
+    val tks = LatinTextReader.nodeToTokens(corpus.nodes(0), Latin24Alphabet)
+    println(tks.mkString("\n"))
   }
 
     //val corpus = TextRepository(livyOneFourOne).corpus
