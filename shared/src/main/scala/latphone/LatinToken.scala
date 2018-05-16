@@ -1,8 +1,10 @@
 package edu.holycross.shot.latin
+import scala.scalajs.js
+import scala.scalajs.js.annotation._
 
 import edu.holycross.shot.cite._
 
 /**
 */
-case class LatinToken(urn: CtsUrn, text: String, category: LatinLexicalCategory ) {
+@JSExportAll  case class LatinToken(urn: CtsUrn, text: String, category: LatinLexicalCategory ) {
 }

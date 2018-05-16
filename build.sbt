@@ -1,6 +1,6 @@
 name := "Latin phonology"
 
-crossScalaVersions in ThisBuild := Seq("2.10.6","2.11.8", "2.12.4")
+crossScalaVersions in ThisBuild := Seq("2.11.8", "2.12.4")
 scalaVersion := (crossScalaVersions in ThisBuild).value.last
 
 lazy val root = project.in(file(".")).
@@ -23,8 +23,8 @@ lazy val crossed = crossProject.in(file(".")).
         "org.scala-js" %% "scalajs-stubs" % scalaJSVersion % "provided",
         "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
 
-        "edu.holycross.shot.cite" %% "xcite" % "3.3.0",
-        "edu.holycross.shot" %% "ohco2" % "10.7.0"
+        "edu.holycross.shot.cite" %%% "xcite" % "3.3.0",
+        "edu.holycross.shot" %%% "ohco2" % "10.7.0"
       )
     ).
     jvmSettings(

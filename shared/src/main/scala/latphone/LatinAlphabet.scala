@@ -1,12 +1,13 @@
 package edu.holycross.shot.latin
-
+import scala.scalajs.js
+import scala.scalajs.js.annotation._
 
 /** Behavior of a case-insensitive Latin alphabet.  All alphabetic and punctuation characters
 * must be explicitly enumerated in lower-case form.
 * White space is ignored in
 * evaluating whether a String is valid in a given alphabet.
 */
-trait LatinAlphabet  {
+@JSExportAll  trait LatinAlphabet  {
 
   /** Ordered list of all allowed alphabetic characters. */
   def alphabetString: String

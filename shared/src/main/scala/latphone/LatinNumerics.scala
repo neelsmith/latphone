@@ -1,9 +1,10 @@
 package edu.holycross.shot.latin
-
+import scala.scalajs.js
+import scala.scalajs.js.annotation._
 
 /** Object for working with strings of numeric characters.
 */
-object LatinNumerics {
+@JSExportAll object LatinNumerics {
   // basic chars
   /** Unicode Roman numeral 1 */
   val one = '\u2160'

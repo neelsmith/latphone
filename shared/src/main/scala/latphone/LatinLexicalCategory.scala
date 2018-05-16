@@ -1,11 +1,12 @@
 package edu.holycross.shot.latin
-
+import scala.scalajs.js
+import scala.scalajs.js.annotation._
 /** All possible lexical categories for a token
 * are enumerated by case objects extending this trait
 *
 * The `name` member must be implemented with an English description of the lexical category.
 */
-sealed trait LatinLexicalCategory {def name : String}
+@JSExportAll  sealed trait LatinLexicalCategory {def name : String}
 
 /** Parseable lexical token. */
 case object LexicalToken extends LatinLexicalCategory {val name = "lexical token"}

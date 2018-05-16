@@ -1,9 +1,11 @@
 package edu.holycross.shot.latin
+import scala.scalajs.js
+import scala.scalajs.js.annotation._
 
 /** Latin alphabet with 23 alphabetic characters.
 * "i" and "u" are treated as semivowels.
 */
-object Latin23Alphabet extends LatinAlphabet {
+@JSExportAll  object Latin23Alphabet extends LatinAlphabet {
 
   //Regular expressions for syllabification
   /** RE for vowel-consonant-vowel pattern.*/

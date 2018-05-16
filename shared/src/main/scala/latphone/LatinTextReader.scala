@@ -1,11 +1,12 @@
 package edu.holycross.shot.latin
-
+import scala.scalajs.js
+import scala.scalajs.js.annotation._
 import edu.holycross.shot.ohco2._
 import edu.holycross.shot.cite._
 
 /**
 */
-object LatinTextReader {
+@JSExportAll object LatinTextReader {
 
   /** Valid strings for abbreviated praenomina in plain-text
   * editions.

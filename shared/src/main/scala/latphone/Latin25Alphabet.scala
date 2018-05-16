@@ -1,9 +1,10 @@
 package edu.holycross.shot.latin
-
+import scala.scalajs.js
+import scala.scalajs.js.annotation._
 /** Latin alphabet with 25 alphabetic characters.
 *  Vocalic "i" and "u" are distinguished from consontal "j" and "v".
 */
-object Latin25Alphabet extends LatinAlphabet {
+@JSExportAll  object Latin25Alphabet extends LatinAlphabet {
 
   //Regular expressions for syllabification
   /** RE for vowel-consonant-vowel pattern.*/
