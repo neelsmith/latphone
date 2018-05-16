@@ -7,5 +7,5 @@ title: "Latin text library"
 
 
 -   an [overview of the library](overview)
--   [quick start](quick): some hands-on examples
+-   some brief [hands-on examples](quick)
 -   version 1.0.0: [API docs](api/edu/holycross/shot/latin/index.html)
