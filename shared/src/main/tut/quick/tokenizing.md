@@ -34,7 +34,7 @@ assert(tokens.size == 29)
 ```
 
 ```tut
-tokens.mkString("\n")
+println(tokens.mkString("\n"))
 ```
 
 Maybe you want to strip out punctuation:  easy in Scala.

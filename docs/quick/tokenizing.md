@@ -34,8 +34,7 @@ assert(tokens.size == 29)
 ```
 
 ```scala
-scala> tokens.mkString("\n")
-res1: String =
+scala> println(tokens.mkString("\n"))
 LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.0,creatus,LexicalToken)
 LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.1,Sp.,Praenomen)
 LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.2,Lucretius,LexicalToken)
@@ -46,7 +45,25 @@ LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.5,magno,LexicalToken)
 LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.6,natu,LexicalToken)
 LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.7,non,LexicalToken)
 LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.8,sufficientibus,LexicalToken)
-LatinToken(ur...
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.9,iam,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.10,viribus,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.11,ad,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.12,consularia,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.13,munera,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.14,obeunda,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.15,intra,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.16,paucos,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.17,dies,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.18,moritur,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.18_0,.,Punctuation)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.19,suffectus,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.20,in,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.21,Lucreti,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.22,locum,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.23,M.,Praenomen)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.24,Horatius,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.25,Pulvillus,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.25_0,.,Punctuation)
 ```
 
 Maybe you want to strip out punctuation:  easy in Scala.
