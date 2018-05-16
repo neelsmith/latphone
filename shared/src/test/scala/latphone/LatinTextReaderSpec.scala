@@ -6,7 +6,12 @@ import edu.holycross.shot.ohco2._
 
 class LatinTextReaderSpec extends FlatSpec {
 
-
+val livyTwoEightFour = """#!ctscatalog
+urn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online#lang
+urn:cts:omar:stoa0179.stoa001.omar:#book,chapter,section#Livy#History of Rome#omar edition##true#lat
+#!ctsdata
+urn:cts:omar:stoa0179.stoa001.omar:2.8.4#creatus Sp. Lucretius consul, qui magno natu non sufficientibus iam viribus ad consularia munera obeunda intra paucos dies moritur. suffectus in Lucreti locum M. Horatius Pulvillus.
+"""
   val livyOneFourOne = "#!ctscatalog\nurn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online#lang\nurn:cts:omar:stoa0179.stoa001.omar:#book,chapter,section#Livy#History of Rome#omar edition##true#lat\n\n#!ctsdata\nurn:cts:omar:stoa0179.stoa001.omar:1.4.1#sed debebatur, ut opinor, fatis tantae origo urbis maximique secundum deorum opes imperii principium. vi compressa Vestalis cum geminum partum edidisset,"
   /*
 urn:cts:omar:stoa0179.stoa001.omar:1.4.2#seu ita rata, seu quia deus auctor cul\
@@ -35,7 +40,16 @@ o iam non feras tantum subsistere, sed in latrones praeda onustos impetus facer\
 e pastoribusque rapta dividere et cum his crescente in dies grege iuvenum seria\
  ac iocos celebrare.*/
 
-  "A LatinTextReader"  should "do thing" in {
-    val corpus = TextRepository(livyOneFourOne).corpus
+
+
+
+  "A LatinTextReader"  should "depunctuate a token" in {
+    val s = "corpus,"
+    val actual = LatinTextReader.depunct(s, Latin24Alphabet)
+    val expected = Vector("corpus", ",")
+    assert(actual == expected)
+
+    //val corpus = TextRepository(livyOneFourOne).corpus
+    //val tokens = LatinTextReader.fromCorpus(corpus, Latin24Alphabet)
   }
 }

@@ -20,3 +20,6 @@ case object Punctuation extends LatinLexicalCategory {val name = "punctuation"}
 
 /** Abbreviated praenomen. */
 case object Praenomen extends LatinLexicalCategory {val name = "praenomen"}
+
+
+case object InvalidToken extends LatinLexicalCategory {val name = "invalid"}
