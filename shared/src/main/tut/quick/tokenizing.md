@@ -31,6 +31,9 @@ val livy2_8_4 = corpus.nodes(0)
 val tokens = LatinTextReader.nodeToTokens(livy2_8_4, Latin24Alphabet)
 
 assert(tokens.size == 29)
+```
+
+```tut
 tokens.mkString("\n")
 ```
 

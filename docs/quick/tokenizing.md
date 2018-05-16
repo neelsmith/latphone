@@ -31,7 +31,22 @@ val livy2_8_4 = corpus.nodes(0)
 val tokens = LatinTextReader.nodeToTokens(livy2_8_4, Latin24Alphabet)
 
 assert(tokens.size == 29)
-tokens.mkString("\n")
+```
+
+```scala
+scala> tokens.mkString("\n")
+res1: String =
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.0,creatus,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.1,Sp.,Praenomen)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.2,Lucretius,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.3,consul,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.3_0,,,Punctuation)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.4,qui,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.5,magno,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.6,natu,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.7,non,LexicalToken)
+LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.8,sufficientibus,LexicalToken)
+LatinToken(ur...
 ```
 
 Maybe you want to strip out punctuation:  easy in Scala.
