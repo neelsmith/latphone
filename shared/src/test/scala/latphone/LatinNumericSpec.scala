@@ -31,7 +31,7 @@ class LatinNumericSpec extends FlatSpec {
     assert(LatinNumerics.valid(s"${LatinNumerics.ten}"))
     assert(LatinNumerics.valid(s"${LatinNumerics.ten}${LatinNumerics.ten}"))
   }
-  
+
   it should "accept subtractive values for 90" in pending
 
   it should "accept values from 100 to 1000 when digits decrease in size" in  pending /*{
@@ -47,25 +47,6 @@ class LatinNumericSpec extends FlatSpec {
 
 
 
-  // Change to validate withg LatinNumerics!
-  "A LatinAlphabet" should "recognize numeric characters as valid" in {
-    assert (Latin23Alphabet.numeric(fourteen))
-  }
-
-  it should "distinguish alphabetic characters with similar looking glyphs" in {
-    val alphabetic = "IV"
-    try {
-      Latin23Alphabet.numeric(alphabetic)
-      fail(s"Should have identified ${alphabetic} as non-numeric.")
-    } catch {
-      case iae: java.lang.IllegalArgumentException => {
-        val expected = "requirement failed: I is not a numeric character."
-        assert (iae.getMessage == expected)
-      }
-      case _ : Throwable => fail("Should have thrown IllegalArgumentException for " + alphabetic)
-    }
-  }
-
   it should "convert individual numeric chars to integer values"  in {
     val ten = '\u2169'
     assert(LatinNumerics.numericToInt(ten) == 10)
@@ -74,10 +55,7 @@ class LatinNumericSpec extends FlatSpec {
   it should "convert strings of numeric chars to integer values" in {
     assert(LatinNumerics.numericToInt(fourteen) == 14)
   }
-  it should "recognize subtractive patterns for 40 and 90" in {
-    assert(LatinNumerics.numericToInt(LatinNumerics.forty) == 40)
-    assert(LatinNumerics.numericToInt(LatinNumerics.ninety) == 90)
-  }
+
 
   it should "recognize subtractive patterns combined with other characrters" in {
     val fortyone = s"${LatinNumerics.forty}${LatinNumerics.one}"
@@ -85,9 +63,18 @@ class LatinNumericSpec extends FlatSpec {
   }
 
 
-  "A LatinString"  should "accept numeric characters in its constructor" in {
-    val ls = LatinString(fourteen, Latin23Alphabet)
-    assert( ls.size == 2)
+  it should "convert individual tens chars to integer values"  in {
+    val ten = '\u2169'
+    assert(LatinNumerics.numericToInt(ten) == 10)
   }
+
+
+  it should "recognize subtractive patterns for 40 and 90" in {
+    assert(LatinNumerics.numericToInt(LatinNumerics.forty) == 40)
+    assert(LatinNumerics.numericToInt(LatinNumerics.ninety) == 90)
+  }
+
+
+
 
 }

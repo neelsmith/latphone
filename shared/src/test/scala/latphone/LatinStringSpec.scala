@@ -25,4 +25,11 @@ class LatinStringSpec extends FlatSpec {
     val expected = "u-te-re"
     assert(ls.syllabify.mkString("-") == expected)
   }
+
+  it  should "accept numeric characters in its constructor" in {
+    val fourteen = s"${LatinNumerics.ten}${LatinNumerics.four}"
+
+    val ls = LatinString(fourteen, Latin23Alphabet)
+    assert( ls.size == 2)
+  }
 }

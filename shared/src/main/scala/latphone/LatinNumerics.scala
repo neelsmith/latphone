@@ -102,14 +102,13 @@ object LatinNumerics {
   * @param lastSeen Integer value of last character seen.
   */
   def valid(src: String, cumulation: String = "", lastSeen: Int = 0): Boolean = {
-    println(s"VALIDATING ${src}, ${cumulation}, ${lastSeen} (size ${src.size})")
+    //println(s"VALIDATING ${src}, ${cumulation}, ${lastSeen} (size ${src.size})")
       src.size match {
         case 0  => {
-          println("So obviously true: go home.")
           true
         }
         case _ => {
-          println("WORK ON  " + src + " and lastSeen " + lastSeen)
+          //println("WORK ON  " + src + " and lastSeen " + lastSeen)
           if (subtractive(src)) {
             val sliver = src.slice(0,2)
             valid(src.tail.tail, cumulation + sliver, lastSeen + numericToInt(sliver))
@@ -118,12 +117,12 @@ object LatinNumerics {
             valid(src.tail, cumulation + src.head, lastSeen + numericToInt(src.head))
 
           } else {
-            println("Match lastSeen " + lastSeen)
+            //println("Match lastSeen " + lastSeen)
             lastSeen match {
 
               case thou if (thou % 1000 == 0) => {
                 val  nextDigit =  numericToInt(src.head)
-                println("Thousand! with next digit " + nextDigit)
+                //println("Thousand! with next digit " + nextDigit)
                 nextDigit match {
                   case ones if 1 to 9 contains ones =>  valid(src.tail, cumulation + src.head, numericToInt(src.head))
 
@@ -139,7 +138,7 @@ object LatinNumerics {
 
               case hund if (hund % 100 == 0)=> {
                 val  nextDigit =  numericToInt(src.head)
-                println("Hundred! with next digit " + nextDigit)
+                //println("Hundred! with next digit " + nextDigit)
                 nextDigit match {
                   case ones if 1 to 9 contains ones =>  valid(src.tail, cumulation + src.head, numericToInt(src.head))
                   case tens if additiveTens.contains(tens) =>  valid(src.tail, cumulation + src.head, numericToInt(src.head))
@@ -150,7 +149,7 @@ object LatinNumerics {
 
               case ten if (ten % 10 == 0)=> {
                 val  nextDigit =  numericToInt(src.head)
-                println("Ten! with next digit " + nextDigit)
+                //println("Ten! with next digit " + nextDigit)
                 nextDigit match {
                   case ones if 1 to 9 contains ones =>
                   valid(src.tail, cumulation + src.head, numericToInt(src.head))
@@ -158,7 +157,7 @@ object LatinNumerics {
                   case 10 => {
                     if (additiveTens.contains(LatinNumerics.numericToInt(cumulation + src.head))) {
                       val newTotal = LatinNumerics.numericToInt(cumulation + src.head)
-                      println(s"and ${newTotal} is in additive tens...")
+                      //println(s"and ${newTotal} is in additive tens...")
                       valid(src.tail, cumulation + src.head, numericToInt(src.head))
                     } else { false }
                   }

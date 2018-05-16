@@ -39,11 +39,20 @@ trait LatinAlphabet  {
   * @param s String to check.
   */
   def numeric(s: String) : Boolean = {
-    for (c <- s) {
-      require(numerics.contains(c.toUpper), s"${c} is not a numeric character.")
-    }
-    true
+    val numericsOnly = s.filter(c => numerics.contains(c.toUpper))
+    (numericsOnly.size == s.size)
   }
+
+  /** True if s is composed only of alphabetic characters.
+  *
+  * @param s String to check.
+  */
+  def alphabetic(s: String) : Boolean = {
+    val alphaOnly = s.filter(c => alphabetString.contains(c.toUpper))
+    (alphaOnly.size == s.size)
+  }
+
+
 
   /** Set of allowed diphthongs.*/
   def diphthongs: Set[String]
