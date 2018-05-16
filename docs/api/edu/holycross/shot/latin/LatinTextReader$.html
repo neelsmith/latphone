@@ -217,7 +217,10 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@JSExportAll</span><span class="args">()</span>
+              
+        </dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -362,10 +365,10 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="edu.holycross.shot.latin.LatinTextReader#depunct" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="depunct(s:String,alphabet:edu.holycross.shot.latin.LatinAlphabet,depunctVector:Vector[String]):Vector[String]"></a><a id="depunct(String,LatinAlphabet,Vector[String]):Vector[String]"></a>
+    </li><li name="edu.holycross.shot.latin.LatinTextReader#depunctuate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="depunctuate(s:String,alphabet:edu.holycross.shot.latin.LatinAlphabet,depunctVector:Vector[String]):Vector[String]"></a><a id="depunctuate(String,LatinAlphabet,Vector[String]):Vector[String]"></a>
       <span class="permalink">
-      <a href="../../../../edu/holycross/shot/latin/LatinTextReader$.html#depunct(s:String,alphabet:edu.holycross.shot.latin.LatinAlphabet,depunctVector:Vector[String]):Vector[String]" title="Permalink">
+      <a href="../../../../edu/holycross/shot/latin/LatinTextReader$.html#depunctuate(s:String,alphabet:edu.holycross.shot.latin.LatinAlphabet,depunctVector:Vector[String]):Vector[String]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -374,7 +377,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">depunct</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="alphabet">alphabet: <a href="LatinAlphabet.html" class="extype" name="edu.holycross.shot.latin.LatinAlphabet">LatinAlphabet</a></span>, <span name="depunctVector">depunctVector: <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Vector.empty</span></span>)</span><span class="result">: <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">depunctuate</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="alphabet">alphabet: <a href="LatinAlphabet.html" class="extype" name="edu.holycross.shot.latin.LatinAlphabet">LatinAlphabet</a></span>, <span name="depunctVector">depunctVector: <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Vector.empty</span></span>)</span><span class="result">: <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Recursively convert a single white-space delimited block
@@ -526,6 +529,23 @@ a single token.</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="edu.holycross.shot.latin.LatinTextReader#nodeToTokens" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="nodeToTokens(n:edu.holycross.shot.ohco2.CitableNode,alphabet:edu.holycross.shot.latin.LatinAlphabet):scala.collection.immutable.Vector[edu.holycross.shot.latin.LatinToken]"></a><a id="nodeToTokens(CitableNode,LatinAlphabet):Vector[LatinToken]"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/latin/LatinTextReader$.html#nodeToTokens(n:edu.holycross.shot.ohco2.CitableNode,alphabet:edu.holycross.shot.latin.LatinAlphabet):scala.collection.immutable.Vector[edu.holycross.shot.latin.LatinToken]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">nodeToTokens</span><span class="params">(<span name="n">n: <span class="extype" name="edu.holycross.shot.ohco2.CitableNode">CitableNode</span></span>, <span name="alphabet">alphabet: <a href="LatinAlphabet.html" class="extype" name="edu.holycross.shot.latin.LatinAlphabet">LatinAlphabet</a></span>)</span><span class="result">: <span class="extype" name="scala.collection.immutable.Vector">Vector</span>[<a href="LatinToken.html" class="extype" name="edu.holycross.shot.latin.LatinToken">LatinToken</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Generate a Vector of tokens for a given citable node.</p><div class="fullcomment"><div class="comment cmt"><p>Generate a Vector of tokens for a given citable node.
+</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p><code>CitableNode</code> to analyze.</p></dd><dt class="param">alphabet</dt><dd class="cmt"><p>Alphabet the nodes is written in.</p></dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
@@ -579,7 +599,8 @@ a single token.</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd
         <span class="name">praenomina</span><span class="result">: <span class="extype" name="scala.collection.immutable.Vector">Vector</span>[<span class="extype" name="java.lang.String">String</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Valid strings for abbreviated praenomina.</p>
+      <p class="shortcomment cmt">Valid strings for abbreviated praenomina in plain-text
+editions.</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
