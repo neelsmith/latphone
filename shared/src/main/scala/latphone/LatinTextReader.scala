@@ -4,7 +4,7 @@ import scala.scalajs.js.annotation._
 import edu.holycross.shot.ohco2._
 import edu.holycross.shot.cite._
 
-/**
+/**  An object for reading and tokenizing plain-text documents  in Latin.
 */
 @JSExportAll object LatinTextReader {
 

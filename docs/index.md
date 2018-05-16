@@ -1,21 +1,11 @@
 ---
 layout: page
-title: "Utilities for Latin phonology"
+title: "Latin text library"
 ---
 
-Future web site for cross-platform library for working with phonology of texts in Latin.
-
-Major components:
-
--   alphabets explicitly enumerating all allowed non-white-space characters
-    -  [table of numeric characters](numerics) defined for all implementations of the `LatinAlphabet` class
--   alphabets classify puncutation characters, vowels, consonants and semivowels
--   Latin strings belong to a specific alphabet class
--   Latin strings can syllabify themselves based on the alphabet class they belong to
--   Syntax of numeric strings can be validated, and integer values computed for arbitrary numeric strings.
+`latphone` is a cross-platform library for working with Latin texts in a specified orthography.
 
 
-## Links
-
--   [Quick start](quick)
--   [API docs](api/edu/holycross/shot/latin/index.html)
+-   an [overview of the library](overview)
+-   [quick start](quick): some hands-on examples
+-   version 1.0.0: [API docs](api/edu/holycross/shot/latin/index.html)
