@@ -9,7 +9,7 @@ object LatinTextReader {
 
 
   /** Valid strings for abbreviated praenomina.*/
-  val praenomina = Vector("C.", "L.", "M.", "M'.", "Sp.")
+  val praenomina = Vector("Agr.", "Ap.", "A.", "K.", "D.", "F.", "C.", "Cn.", "L.", "Mam.", "M.", "M'.", "N.", "Oct.", "Opet.", "Post.", "Pro.", "P.", "Q.", "Sert.", "Ser.", "Sex.", "Sp.", "St.", "Ti", "T.", "V.", "Vol.", "Vop.")
 
   /** Determine [[LatinLexicalCategory]] for a string representing
   * a single token.
@@ -18,10 +18,17 @@ object LatinTextReader {
    */
   def lexicalCategory(s: String, alphabet: LatinAlphabet): LatinLexicalCategory = {
     if (alphabet.numerics.contains(s(0))) {
-
-      NumericToken
+      if (alphabet.numeric(s)) {
+        NumericToken
+      } else {
+        InvalidToken
+      }
     } else if (alphabet.alphabetString.contains(s(0))) {
-      LexicalToken
+      if (alphabet.alphabetic(s)) {
+        LexicalToken
+      } else {
+        InvalidToken
+      }
 
     } else {
       InvalidToken
@@ -38,11 +45,11 @@ object LatinTextReader {
   * @param depunctVector Vector of previously accumulated
   * strings.
   */
-  def depunct (s: String, alphabet: LatinAlphabet, depunctVector: Vector[String] = Vector.empty): Vector[String] = {
+  def depunctuate (s: String, alphabet: LatinAlphabet, depunctVector: Vector[String] = Vector.empty): Vector[String] = {
     val trailChar = s"${s.last}"
     if (alphabet.punctuationString.contains(trailChar)) {
       val dropLast = s.reverse.tail.reverse
-      depunct(dropLast, alphabet, trailChar +: depunctVector)
+      depunctuate(dropLast, alphabet, trailChar +: depunctVector)
     } else {
       s +: depunctVector
     }

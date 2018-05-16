@@ -43,13 +43,20 @@ e pastoribusque rapta dividere et cum his crescente in dies grege iuvenum seria\
 
 
 
-  "A LatinTextReader"  should "depunctuate a token" in {
+  "A LatinTextReader"  should "depunctuate a token block into individual tokens" in {
     val s = "corpus,"
-    val actual = LatinTextReader.depunct(s, Latin24Alphabet)
+    val actual = LatinTextReader.depunctuate(s, Latin24Alphabet)
     val expected = Vector("corpus", ",")
     assert(actual == expected)
+  }
+
+  it should "determine the lexical category of a single token" in {
+    assert (LatinTextReader.lexicalCategory("consul", Latin24Alphabet) == LexicalToken)
+
+    assert (LatinTextReader.lexicalCategory("ⅩⅧ", Latin24Alphabet) == NumericToken)
+  }
 
     //val corpus = TextRepository(livyOneFourOne).corpus
     //val tokens = LatinTextReader.fromCorpus(corpus, Latin24Alphabet)
-  }
+
 }

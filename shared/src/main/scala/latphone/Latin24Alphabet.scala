@@ -72,6 +72,14 @@ object Latin24Alphabet extends LatinAlphabet {
     Set("i")
   }
 
+  /** True if s is composed only of alphabetic characters.
+  *
+  * @param s String to check.
+
+  def alphabetic(s: String) : Boolean= {
+    val alphaOnly = s.filter(c => alphabetString.contains(c.toLower))
+    (alphaOnly.size == s.size)
+  }  */
 
   /** Divide a given String into a Vector of
   * Strings.

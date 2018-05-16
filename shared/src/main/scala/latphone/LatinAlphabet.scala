@@ -48,7 +48,7 @@ trait LatinAlphabet  {
   * @param s String to check.
   */
   def alphabetic(s: String) : Boolean = {
-    val alphaOnly = s.filter(c => alphabetString.contains(c.toUpper))
+    val alphaOnly = s.filter(c => alphabetString.contains(c.toLower))
     (alphaOnly.size == s.size)
   }
 
