@@ -17,9 +17,9 @@ The syntax of numeric strings can be validated, and integer values computed for 
 
 ## Tokenization
 
-When a string of characters in a particular alphabet occurs in a node of citable text, it can be parsed into a sequence of citable `LatinToken`s. Each token classified into a particular `LatinLexicalCategory` based on its composition of alphabetic, numeric or punctuation characters.
+When a string of characters in a particular alphabet occurs in a node of citable text, it can be parsed into a sequence of citable `LatinToken`s. Each token is classified into a particular `LatinLexicalCategory` based on its composition of alphabetic, numeric or punctuation characters.
 
 
 ## Syllabification
 
-Given this definition of a `LatinAlphabet`, lexical strings in that orthography can be automatically broken into a sequence of syllables.
+Given this definition of a `LatinAlphabet`, lexical strings in a specified alphabet can be automatically broken into a sequence of syllables.
