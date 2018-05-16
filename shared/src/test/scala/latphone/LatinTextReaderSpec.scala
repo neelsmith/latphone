@@ -51,9 +51,23 @@ e pastoribusque rapta dividere et cum his crescente in dies grege iuvenum seria\
   }
 
   it should "determine the lexical category of a single token" in {
+
+    // pure alphabetic chars:
     assert (LatinTextReader.lexicalCategory("consul", Latin24Alphabet) == LexicalToken)
 
-    assert (LatinTextReader.lexicalCategory("ⅩⅧ", Latin24Alphabet) == NumericToken)
+    // genuine numeric chars:
+    val seventeen = "ⅩⅦ"
+    assert (LatinTextReader.lexicalCategory(seventeen, Latin24Alphabet) == NumericToken)
+  }
+
+  it should "reject tokens with mixed character types" in {
+    // no good!  Alphabetic "X" with numeric seven!
+    val mixedAlphaNum = "XⅧ	"
+    assert (LatinTextReader.lexicalCategory(mixedAlphaNum, Latin24Alphabet) == InvalidToken)
+
+    // numeric ten with alphabetic "VII"
+    val mixedNumAlph = "ⅩVII"
+    assert (LatinTextReader.lexicalCategory(mixedNumAlph, Latin24Alphabet) == InvalidToken)
   }
 
     //val corpus = TextRepository(livyOneFourOne).corpus
