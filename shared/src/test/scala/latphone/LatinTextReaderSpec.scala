@@ -83,7 +83,10 @@ e pastoribusque rapta dividere et cum his crescente in dies grege iuvenum seria\
   it should "generate a vector of tokens from a citable node" in {
     val corpus = TextRepository(livyTiny).corpus
     val tks = LatinTextReader.nodeToTokens(corpus.nodes(0), Latin24Alphabet)
-    println(tks.mkString("\n"))
+    assert(tks.size == 5)
+    assert(tks.filter(_.category == LexicalToken).size == 3)
+    assert(tks.filter(_.category == Punctuation).size == 1)
+    assert(tks.filter(_.category == Praenomen).size == 1)
   }
 
     //val corpus = TextRepository(livyOneFourOne).corpus

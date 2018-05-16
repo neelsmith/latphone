@@ -79,7 +79,11 @@ object LatinTextReader {
       } else {
         val depunctuated = depunctuate(unit._1, alphabet)
         val first =  LatinToken(newUrn, depunctuated.head, lexicalCategory(depunctuated.head, alphabet))
-        Vector(first)
+
+        val trailingPunct = for (punct <- depunctuated.tail zipWithIndex) yield {
+          LatinToken(CtsUrn(newUrn + "_" + punct._2), punct._1, Punctuation)
+        }
+        first +: trailingPunct
         /*
         val depunctuated = unit._1.split(alphabet.punctuationString.toArray)
         if (depunctuated.size > 1) {
