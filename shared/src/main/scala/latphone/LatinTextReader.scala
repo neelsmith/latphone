@@ -51,7 +51,12 @@ import edu.holycross.shot.cite._
     val trailChar = s"${s.last}"
     if (alphabet.punctuationString.contains(trailChar)) {
       val dropLast = s.reverse.tail.reverse
-      depunctuate(dropLast, alphabet, trailChar +: depunctVector)
+      if (dropLast.nonEmpty) {
+        depunctuate(dropLast, alphabet, trailChar +: depunctVector)
+      } else {
+        s +: depunctVector
+      }
+
     } else {
       s +: depunctVector
     }
@@ -66,7 +71,8 @@ import edu.holycross.shot.cite._
   */
   def nodeToTokens(n: CitableNode, alphabet: LatinAlphabet) = {//b: Vector[LatinToken] = {
     val urn = n.urn
-    val units = n.text.split(" ")
+    val units = n.text.split(" ").filter(_.nonEmpty)
+
     val classified = for (unit <- units.zipWithIndex) yield {
       val newPassage = urn.passageComponent + "." + unit._2
       val newUrn = CtsUrn(urn.dropPassage.toString + newPassage)
@@ -85,15 +91,7 @@ import edu.holycross.shot.cite._
           LatinToken(CtsUrn(newUrn + "_" + punct._2), punct._1, Punctuation)
         }
         first +: trailingPunct
-        /*
-        val depunctuated = unit._1.split(alphabet.punctuationString.toArray)
-        if (depunctuated.size > 1) {
-          depunctuate(depunctuated, newUrn, alphabet)
-          Vector.empty[LatinToken]
-        } else {
-          val cat = lexicalCategory(unit._1, alphabet)
-          Vector(LatinToken(newUrn, unit._1,cat))
-        }*/
+
       }
       //println("Token class is " + tokenClass)
       tokenClass

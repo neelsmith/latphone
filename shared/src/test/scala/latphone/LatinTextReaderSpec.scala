@@ -2,6 +2,7 @@ package edu.holycross.shot.latin
 import org.scalatest.FlatSpec
 
 import edu.holycross.shot.ohco2._
+import edu.holycross.shot.cite._
 
 
 class LatinTextReaderSpec extends FlatSpec {
@@ -89,7 +90,6 @@ e pastoribusque rapta dividere et cum his crescente in dies grege iuvenum seria\
     assert(tks.filter(_.category == Praenomen).size == 1)
   }
 
-    //val corpus = TextRepository(livyOneFourOne).corpus
-    //val tokens = LatinTextReader.fromCorpus(corpus, Latin24Alphabet)
+
 
 }
