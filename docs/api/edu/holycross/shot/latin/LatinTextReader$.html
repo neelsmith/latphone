@@ -365,6 +365,22 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="edu.holycross.shot.latin.LatinTextReader#corpusToTokens" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="corpusToTokens(corpus:edu.holycross.shot.ohco2.Corpus,alphabet:edu.holycross.shot.latin.LatinAlphabet):Vector[edu.holycross.shot.latin.LatinToken]"></a><a id="corpusToTokens(Corpus,LatinAlphabet):Vector[LatinToken]"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/latin/LatinTextReader$.html#corpusToTokens(corpus:edu.holycross.shot.ohco2.Corpus,alphabet:edu.holycross.shot.latin.LatinAlphabet):Vector[edu.holycross.shot.latin.LatinToken]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">corpusToTokens</span><span class="params">(<span name="corpus">corpus: <span class="extype" name="edu.holycross.shot.ohco2.Corpus">Corpus</span></span>, <span name="alphabet">alphabet: <a href="LatinAlphabet.html" class="extype" name="edu.holycross.shot.latin.LatinAlphabet">LatinAlphabet</a></span>)</span><span class="result">: <span class="extype" name="scala.Vector">Vector</span>[<a href="LatinToken.html" class="extype" name="edu.holycross.shot.latin.LatinToken">LatinToken</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Generate a Vector of tokens for a given corpus.</p><div class="fullcomment"><div class="comment cmt"><p>Generate a Vector of tokens for a given corpus.</p></div><dl class="paramcmts block"><dt class="param">alphabet</dt><dd class="cmt"><p>Alphabet the corpus is written in.</p></dd></dl></div>
     </li><li name="edu.holycross.shot.latin.LatinTextReader#depunctuate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="depunctuate(s:String,alphabet:edu.holycross.shot.latin.LatinAlphabet,depunctVector:Vector[String]):Vector[String]"></a><a id="depunctuate(String,LatinAlphabet,Vector[String]):Vector[String]"></a>
       <span class="permalink">
@@ -530,9 +546,9 @@ a single token.</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="edu.holycross.shot.latin.LatinTextReader#nodeToTokens" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="nodeToTokens(n:edu.holycross.shot.ohco2.CitableNode,alphabet:edu.holycross.shot.latin.LatinAlphabet):scala.collection.immutable.Vector[edu.holycross.shot.latin.LatinToken]"></a><a id="nodeToTokens(CitableNode,LatinAlphabet):Vector[LatinToken]"></a>
+      <a id="nodeToTokens(n:edu.holycross.shot.ohco2.CitableNode,alphabet:edu.holycross.shot.latin.LatinAlphabet):Vector[edu.holycross.shot.latin.LatinToken]"></a><a id="nodeToTokens(CitableNode,LatinAlphabet):Vector[LatinToken]"></a>
       <span class="permalink">
-      <a href="../../../../edu/holycross/shot/latin/LatinTextReader$.html#nodeToTokens(n:edu.holycross.shot.ohco2.CitableNode,alphabet:edu.holycross.shot.latin.LatinAlphabet):scala.collection.immutable.Vector[edu.holycross.shot.latin.LatinToken]" title="Permalink">
+      <a href="../../../../edu/holycross/shot/latin/LatinTextReader$.html#nodeToTokens(n:edu.holycross.shot.ohco2.CitableNode,alphabet:edu.holycross.shot.latin.LatinAlphabet):Vector[edu.holycross.shot.latin.LatinToken]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -541,11 +557,11 @@ a single token.</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">nodeToTokens</span><span class="params">(<span name="n">n: <span class="extype" name="edu.holycross.shot.ohco2.CitableNode">CitableNode</span></span>, <span name="alphabet">alphabet: <a href="LatinAlphabet.html" class="extype" name="edu.holycross.shot.latin.LatinAlphabet">LatinAlphabet</a></span>)</span><span class="result">: <span class="extype" name="scala.collection.immutable.Vector">Vector</span>[<a href="LatinToken.html" class="extype" name="edu.holycross.shot.latin.LatinToken">LatinToken</a>]</span>
+        <span class="name">nodeToTokens</span><span class="params">(<span name="n">n: <span class="extype" name="edu.holycross.shot.ohco2.CitableNode">CitableNode</span></span>, <span name="alphabet">alphabet: <a href="LatinAlphabet.html" class="extype" name="edu.holycross.shot.latin.LatinAlphabet">LatinAlphabet</a></span>)</span><span class="result">: <span class="extype" name="scala.Vector">Vector</span>[<a href="LatinToken.html" class="extype" name="edu.holycross.shot.latin.LatinToken">LatinToken</a>]</span>
       </span>
       
       <p class="shortcomment cmt">Generate a Vector of tokens for a given citable node.</p><div class="fullcomment"><div class="comment cmt"><p>Generate a Vector of tokens for a given citable node.
-</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p><code>CitableNode</code> to analyze.</p></dd><dt class="param">alphabet</dt><dd class="cmt"><p>Alphabet the nodes is written in.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p><code>CitableNode</code> to analyze.</p></dd><dt class="param">alphabet</dt><dd class="cmt"><p>Alphabet the node is written in.</p></dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">

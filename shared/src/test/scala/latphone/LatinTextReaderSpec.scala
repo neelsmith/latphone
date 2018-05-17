@@ -69,4 +69,14 @@ urn:cts:omar:stoa0179.stoa001.omar:2.8.4#creatus Sp. Lucretius consul, qui magno
     assert(tokens.size == 6)
   }
 
+
+  it should "generate a vector of tokens from a corpus" in {
+    val c1 = TextRepository(livyOneFourOne).corpus
+    val c2 = TextRepository(livyTwoEightFour).corpus
+
+    val composite = Corpus.composite(Vector(c1,c2))
+    val tokens = LatinTextReader.corpusToTokens(composite, Latin24Alphabet)
+    val expectedTokens = 54
+    assert(tokens.size == expectedTokens)
+  }
 }

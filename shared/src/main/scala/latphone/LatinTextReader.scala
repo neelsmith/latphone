@@ -67,9 +67,9 @@ import edu.holycross.shot.cite._
   /** Generate a Vector of tokens for a given citable node.
   *
   * @param n `CitableNode` to analyze.
-  * @param alphabet Alphabet the nodes is written in.
+  * @param alphabet Alphabet the node is written in.
   */
-  def nodeToTokens(n: CitableNode, alphabet: LatinAlphabet) = {//b: Vector[LatinToken] = {
+  def nodeToTokens(n: CitableNode, alphabet: LatinAlphabet) : Vector[LatinToken] = {
     val urn = n.urn
     val units = n.text.split(" ").filter(_.nonEmpty)
 
@@ -98,6 +98,17 @@ import edu.holycross.shot.cite._
     }
     //println("Classified is " + classified.toVector.flatten)
     classified.toVector.flatten
+  }
+
+  /** Generate a Vector of tokens for a given corpus.
+  * @param n `CitableNode` to analyze.
+  * @param alphabet Alphabet the corpus is written in.
+  */
+  def corpusToTokens(corpus: Corpus, alphabet: LatinAlphabet): Vector[LatinToken] = {
+    def tokens = for (n <- corpus.nodes zipWithIndex) yield {
+      LatinTextReader.nodeToTokens(n._1, alphabet)
+    }
+    tokens.flatten
   }
 
 }
