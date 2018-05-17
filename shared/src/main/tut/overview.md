@@ -11,7 +11,7 @@ In all alphabets, white space characters separate blocks of one or more tokens, 
 
 ## Numeric characters
 
-As single set of numeric characters is defined for all implementations of `LatinAlphabet`:  it is a subset of the Unicode codepoints defined for Roman numerals in the "Number forms" section of Unicode, and is [summarized in this table](../numerics).
+A single set of numeric characters is defined for all implementations of `LatinAlphabet`:  it is a subset of the Unicode codepoints defined for Roman numerals in the "Number forms" section of Unicode, and is [summarized in this table](../numerics).
 
 The syntax of numeric strings can be validated, and integer values computed for arbitrary numeric strings.
 
