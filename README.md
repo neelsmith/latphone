@@ -6,7 +6,7 @@
 
 A library for working with Latin texts in a specifeid orthography.
 
-## Current version: 1.2.0
+## Current version: 1.3.0
 
 
 Status:  **active development**. [Release notes](releases.md)

@@ -1,5 +1,7 @@
 # Release notes
 
+**1.3.0**:  adds lower/upperCase functions to `LatinToken` class.
+
 **1.2.0**: adds function to tokenize an entire corpus.
 
 **1.1.0**:  adds delimited-text serialization of tokens.

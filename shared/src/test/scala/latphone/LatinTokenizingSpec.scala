@@ -27,4 +27,12 @@ class LatinTokenizingSpec extends FlatSpec {
     assert(token.cex == expected)
   }
 
+  it should "create new case-insensitive tokens" in {
+    val u = CtsUrn("urn:cts:omar:stoa0179.stoa001.omar:1.pr.1.1")
+    val text = "facturae"
+    val token = LatinToken(u, text, LexicalToken)
+
+    assert(token.toUpperCase.text == "FACTURAE")
+  }
+
 }

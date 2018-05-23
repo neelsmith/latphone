@@ -19,4 +19,14 @@ import edu.holycross.shot.cite._
   /** String serialization in CEX delimited-text format.
   */
   def cex : String = delimitedText("#")
+
+  /** Create new token with text in all lower case.*/
+  def toLowerCase:  LatinToken = {
+    LatinToken(urn, text.toLowerCase, category)
+  }
+
+  /** Create new token with text in all upper case.*/
+  def toUpperCase:  LatinToken = {
+    LatinToken(urn, text.toUpperCase, category)
+  }
 }
