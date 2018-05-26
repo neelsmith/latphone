@@ -1,6 +1,7 @@
 package edu.holycross.shot.latin
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+
 /** All possible lexical categories for a token
 * are enumerated by case objects extending this trait
 *
