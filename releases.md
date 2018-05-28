@@ -1,5 +1,10 @@
 # Release notes
 
+**1.4.0**:  adds function to write an Alphabet in FST notation.
+
+**1.3.1**:  republish.
+
+
 **1.3.0**:  adds lower/upperCase functions to `LatinToken` class.
 
 **1.2.0**: adds function to tokenize an entire corpus.

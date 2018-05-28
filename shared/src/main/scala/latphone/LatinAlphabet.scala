@@ -9,6 +9,9 @@ import scala.scalajs.js.annotation._
 */
 @JSExportAll  trait LatinAlphabet  {
 
+  /** Labelling String for a specific implementation. */
+  def label : String
+
   /** Ordered list of all allowed alphabetic characters. */
   def alphabetString: String
 
@@ -115,4 +118,18 @@ import scala.scalajs.js.annotation._
   */
   def syllabify(s: String): Vector[String]
 
+
+  /** Compose a String in the notation of the Stuttgart
+  * FST toolkit representing this alphabet for use
+  * with the tabulae system for building morphological parsers.
+  */
+  def fstString : String = {
+    val comment = "%" + label.replaceAll("\n", " ")
+    val composition = "#letter# = #consonant# #vowel#"
+
+
+    val components = List(comment, consonants.toString, vowels.toString, composition)
+
+    components.mkString("\n\n")
+  }
 }

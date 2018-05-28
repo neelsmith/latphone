@@ -6,6 +6,8 @@ import scala.scalajs.js.annotation._
 */
 @JSExportAll  object Latin25Alphabet extends LatinAlphabet {
 
+  def label = """Latin alphabet with 25 alphabetic characters.
+  Vocalic "i" and "u" are distinguished from consontal "j" and "v"."""
   //Regular expressions for syllabification
   /** RE for vowel-consonant-vowel pattern.*/
   val vcv = "(.*[aeiou])([bcdfghklmnpqrstvx®])([aeiou].*)".r

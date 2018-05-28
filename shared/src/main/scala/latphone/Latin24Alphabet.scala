@@ -7,6 +7,10 @@ import scala.scalajs.js.annotation._
 */
 @JSExportAll  object Latin24Alphabet extends LatinAlphabet {
 
+  def label = """ Latin alphabet with 24 alphabetic characters.
+  "i"is treated as a semivowel, but vocalic "u" and
+  consonantal "v" are distingished. """
+
   //Regular expressions for syllabification
   /** RE for vowel-consonant-vowel pattern.*/
   val vcv = "(.*[aeiou])([bcdfghklmnpqrstvx])([aeiou].*)".r

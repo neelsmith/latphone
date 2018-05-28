@@ -7,6 +7,9 @@ import scala.scalajs.js.annotation._
 */
 @JSExportAll  object Latin23Alphabet extends LatinAlphabet {
 
+  def label = """ Latin alphabet with 23 alphabetic characters.
+  * "i" and "u" are treated as semivowels."""
+
   //Regular expressions for syllabification
   /** RE for vowel-consonant-vowel pattern.*/
   val vcv = "(.*[aeiou])([bcdfghklmnpqrstvx®])([aeiou].*)".r
