@@ -1,5 +1,8 @@
 # Release notes
 
+
+**1.5.0**:  adds `Latin25MacrosAlphabet`.
+
 **1.4.1**   corrects FST output.
 
 **1.4.0**:  adds function to write an Alphabet in FST notation.

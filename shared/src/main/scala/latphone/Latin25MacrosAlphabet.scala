@@ -3,11 +3,13 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 /** Latin alphabet with 25 alphabetic characters.
 *  Vocalic "i" and "u" are distinguished from consontal "j" and "v".
+*  Vowels may be short (unmarked) or explicitly marked with macra.
 */
-@JSExportAll  object Latin25Alphabet extends LatinAlphabet {
+@JSExportAll  object Latin25MacrosAlphabet extends LatinAlphabet {
 
   def label = """Latin alphabet with 25 alphabetic characters.
-  Vocalic "i" and "u" are distinguished from consontal "j" and "v"."""
+  Vocalic "i" and "u" are distinguished from consontal "j" and "v".
+  All vowels include versions with macron."""
   //Regular expressions for syllabification
   /** RE for vowel-consonant-vowel pattern.*/
   val vcv = "(.*[aeiou])([bcdfghklmnpqrstvx®])([aeiou].*)".r
@@ -29,19 +31,20 @@ import scala.scalajs.js.annotation._
   val uSplits = "(.*u)([aeiou].*)".r
 
   // adjust semivowels
-  /** RE for word-initial i followed by vowel. */
-  val initialJ = "^i-([aeiou].+)".r
-  /** RE for syllable-initial i followed by vowel. */
-  val syllInitialJ = "(.+[aeiou])-([bcfghklmnpqrvx]?)i-([aeiou].+)".r
-  /** RE for diphthong ei when it should be read as e+semivowel i. */
-  val fakeDiphthongI = "(.*)ei-([aeiou].+)".r
 
   /** RE for word-initial i followed by vowel. */
-  val initialV = "^u-([aeiou].+)".r
+  //val initialJ = "^i-([aeiou].+)".r
   /** RE for syllable-initial i followed by vowel. */
-  val syllInitialV = "(.+[aeiou])-([bcfghklmnpqrvx]?)u-([aeiou].+)".r
+  //val syllInitialJ = "(.+[aeiou])-([bcfghklmnpqrvx]?)i-([aeiou].+)".r
+  /** RE for diphthong ei when it should be read as e+semivowel i. */
+  //val fakeDiphthongI = "(.*)ei-([aeiou].+)".r
+
+  /** RE for word-initial i followed by vowel. */
+  //val initialV = "^u-([aeiou].+)".r
+  /** RE for syllable-initial i followed by vowel. */
+  //val syllInitialV = "(.+[aeiou])-([bcfghklmnpqrvx]?)u-([aeiou].+)".r
   /** RE for diphthong ei when it should be read as e+semivowel u. */
-  val fakeDiphthongU = "(.*)(au|eu)-([aeiou].+)".r
+  //val fakeDiphthongU = "(.*)(au|eu)-([aeiou].+)".r
 
   /** Ordered sequence of alphabetic characters.*/
   def alphabetString: String = {
@@ -67,7 +70,7 @@ import scala.scalajs.js.annotation._
   }
   /** Set of all recognized vowels.*/
   def vowels: Set[String] = {
-    Set("a","e","o","i","u")
+    Set("a","e","o","i","u","ā","ē","ī","ō","ū")
   }
   /** Set of all recognized semivowels.*/
   def semivowels: Set[String] = {
@@ -132,14 +135,14 @@ import scala.scalajs.js.annotation._
 
 
     if (rule4.toLowerCase == protectQu) {
-      val adjusted = restoreSemiConsonants(protectQu)
-      adjusted.replaceAll("®","qu").split("-").toVector
+      //val adjusted = restoreSemiConsonants(protectQu)
+      rule4.replaceAll("®","qu").split("-").toVector
     } else {
       syllabify(rule4)
     }
   }
 
-  def restoreSemiConsonants(s: String) : String = {
+  /*def restoreSemiConsonants(s: String) : String = {
     val i1 = s match {
       case initialJ(x) => "i" + x
       case _ => s
@@ -170,16 +173,9 @@ import scala.scalajs.js.annotation._
       case _ => v2
     }
     v3
-/*
-    if (v3 == s) {
-      s
-    } else {
-      syllabify(v3).mkString("-")
-    }
-    */
-  }
+  } */
   override def toString: String = {
-    "Latin alphabet with 23 alphabetic characters."
+    "Latin alphabet with 25 alphabetic characters."
   }
 
 }
