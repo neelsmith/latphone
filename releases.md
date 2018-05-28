@@ -1,5 +1,7 @@
 # Release notes
 
+**1.4.1**   corrects FST output.
+
 **1.4.0**:  adds function to write an Alphabet in FST notation.
 
 **1.3.1**:  republish.

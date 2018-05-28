@@ -128,7 +128,7 @@ import scala.scalajs.js.annotation._
     val composition = "#letter# = #consonant# #vowel#"
 
 
-    val components = List(comment, consonants.toString, vowels.toString, composition)
+    val components = List(comment, "#consonant# =  " + consonants.mkString, "#vowel# = " + vowels.mkString, composition)
 
     components.mkString("\n\n")
   }
