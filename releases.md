@@ -1,5 +1,7 @@
 # Release notes
 
+**1.5.1**: updates versions of some included libraries.
+
 
 **1.5.0**:  adds `Latin25MacrosAlphabet`.
 
