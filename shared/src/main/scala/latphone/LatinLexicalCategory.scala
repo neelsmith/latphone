@@ -1,4 +1,6 @@
 package edu.holycross.shot.latin
+import edu.holycross.shot.mid.validator._
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
@@ -10,16 +12,16 @@ import scala.scalajs.js.annotation._
 @JSExportAll  sealed trait LatinLexicalCategory {def name : String}
 
 /** Parseable lexical token. */
-case object LexicalToken extends LatinLexicalCategory {val name = "lexical token"}
+case object LexicalToken extends LatinLexicalCategory with MidTokenCategory {val name = "lexical token"}
 
 /** Parseable numeric token. */
-case object NumericToken extends LatinLexicalCategory {val name = "numeric token"}
+case object NumericToken extends LatinLexicalCategory with MidTokenCategory  {val name = "numeric token"}
 
 /** Single punctuation character. */
-case object Punctuation extends LatinLexicalCategory {val name = "punctuation"}
+case object PunctuationToken extends LatinLexicalCategory with MidTokenCategory {val name = "punctuation"}
 
 /** Abbreviated praenomen. */
-case object Praenomen extends LatinLexicalCategory {val name = "praenomen"}
+case object PraenomenToken extends LatinLexicalCategory with MidTokenCategory {val name = "praenomen"}
 
 /** Invalid token for a given alphabet.*/
-case object InvalidToken extends LatinLexicalCategory {val name = "invalid"}
+case object InvalidToken extends LatinLexicalCategory with MidTokenCategory {val name = "invalid"}

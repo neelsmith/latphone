@@ -177,4 +177,8 @@ class Latin23AlphabetSpec extends FlatSpec {
   it should "generate valid FST" in {
     println(Latin23Alphabet.fstString)
   }
+
+
+
+
 }

@@ -81,14 +81,14 @@ import edu.holycross.shot.cite._
       // process praenomina first since "." is part
       // of the token:
       val tokenClass: Vector[LatinToken] = if (praenomina.contains(unit._1)) {
-        Vector(LatinToken(newUrn, unit._1, Praenomen))
+        Vector(LatinToken(newUrn, unit._1, PraenomenToken))
 
       } else {
         val depunctuated = depunctuate(unit._1, alphabet)
         val first =  LatinToken(newUrn, depunctuated.head, lexicalCategory(depunctuated.head, alphabet))
 
         val trailingPunct = for (punct <- depunctuated.tail zipWithIndex) yield {
-          LatinToken(CtsUrn(newUrn + "_" + punct._2), punct._1, Punctuation)
+          LatinToken(CtsUrn(newUrn + "_" + punct._2), punct._1, PunctuationToken)
         }
         first +: trailingPunct
 

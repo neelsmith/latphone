@@ -1,14 +1,34 @@
 package edu.holycross.shot.latin
+import edu.holycross.shot.mid.validator._
+import edu.holycross.shot.cite._
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 /** Latin alphabet with 23 alphabetic characters.
 * "i" and "u" are treated as semivowels.
 */
-@JSExportAll  object Latin23Alphabet extends LatinAlphabet {
+@JSExportAll  object Latin23Alphabet extends LatinAlphabet with MidOrthography {
+
+  def orthography = "Latin alphabet with 23 alphabetic characters"
+
+
+  val charSet:  Set[Int] = (for (ch <- Latin23Alphabet.alphabetString ++ Latin23Alphabet.punctuationString) yield {ch.toInt}).toSet
+
+  def validCP(cp: Int): Boolean  = {
+    charSet.contains(cp)
+  }
+  def tokenCategories: Vector[MidTokenCategory]  = {
+    Vector(PraenomenToken, PunctuationToken, LexicalToken, NumericToken, InvalidToken)
+  }
+  def tokenizeString(s: String): Vector[MidToken] = {
+    val dummy = CtsUrn("urn:cts:null:null:")
+    
+    Vector.empty[MidToken]
+  }
 
   def label = """ Latin alphabet with 23 alphabetic characters.
-  * "i" and "u" are treated as semivowels."""
+   "i" and "u" are treated as semivowels."""
 
   //Regular expressions for syllabification
   /** RE for vowel-consonant-vowel pattern.*/
@@ -54,6 +74,10 @@ import scala.scalajs.js.annotation._
   def punctuationString: String = {
     "(),;:.?"
   }
+/*
+  def charSet : Set[Int] = {
+    val iList =
+  }*/
 
   /** Set of all recognized diphthongs.*/
   def diphthongs: Set[String] = {
@@ -75,6 +99,7 @@ import scala.scalajs.js.annotation._
   def semivowels: Set[String] = {
     Set("i","u")
   }
+
 
 
   /** Divide a given String into a Vector of
