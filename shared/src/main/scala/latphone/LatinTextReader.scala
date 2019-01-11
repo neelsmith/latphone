@@ -3,6 +3,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 import edu.holycross.shot.ohco2._
 import edu.holycross.shot.cite._
+import edu.holycross.shot.mid.validator._
 
 /**  An object for reading and tokenizing plain-text documents  in Latin.
 */
@@ -18,22 +19,22 @@ import edu.holycross.shot.cite._
   * @param s String to analyze.
   * @param alphabet Alphabet the string is written in.
    */
-  def lexicalCategory(s: String, alphabet: LatinAlphabet): LatinLexicalCategory = {
+  def lexicalCategory(s: String, alphabet: LatinAlphabet): Option[MidTokenCategory] = {
     if (alphabet.numerics.contains(s(0).toUpper)) {
       if (alphabet.numeric(s)) {
-        NumericToken
+        Some(NumericToken)
       } else {
-        InvalidToken
+        None
       }
     } else if (alphabet.alphabetString.contains(s(0).toLower)) {
       if (alphabet.alphabetic(s)) {
-        LexicalToken
+        Some(LexicalToken)
       } else {
-        InvalidToken
+        None
       }
 
     } else {
-      InvalidToken
+      None
     }
   }
 
@@ -69,7 +70,7 @@ import edu.holycross.shot.cite._
   * @param n `CitableNode` to analyze.
   * @param alphabet Alphabet the node is written in.
   */
-  def nodeToTokens(n: CitableNode, alphabet: LatinAlphabet) : Vector[LatinToken] = {
+  def nodeToTokens(n: CitableNode, alphabet: LatinAlphabet) : Vector[MidToken] = {
     val urn = n.urn
     val units = n.text.split(" ").filter(_.nonEmpty)
 
@@ -80,15 +81,15 @@ import edu.holycross.shot.cite._
       //println(unit + " in " + newUrn)
       // process praenomina first since "." is part
       // of the token:
-      val tokenClass: Vector[LatinToken] = if (praenomina.contains(unit._1)) {
-        Vector(LatinToken(newUrn, unit._1, PraenomenToken))
+      val tokenClass: Vector[MidToken] = if (praenomina.contains(unit._1)) {
+        Vector(MidToken(newUrn, unit._1, Some(PraenomenToken)))
 
       } else {
         val depunctuated = depunctuate(unit._1, alphabet)
-        val first =  LatinToken(newUrn, depunctuated.head, lexicalCategory(depunctuated.head, alphabet))
+        val first =  MidToken(newUrn, depunctuated.head, lexicalCategory(depunctuated.head, alphabet))
 
         val trailingPunct = for (punct <- depunctuated.tail zipWithIndex) yield {
-          LatinToken(CtsUrn(newUrn + "_" + punct._2), punct._1, PunctuationToken)
+          MidToken(CtsUrn(newUrn + "_" + punct._2), punct._1, Some(PunctuationToken))
         }
         first +: trailingPunct
 
@@ -104,7 +105,7 @@ import edu.holycross.shot.cite._
   * @param n `CitableNode` to analyze.
   * @param alphabet Alphabet the corpus is written in.
   */
-  def corpusToTokens(corpus: Corpus, alphabet: LatinAlphabet): Vector[LatinToken] = {
+  def corpusToTokens(corpus: Corpus, alphabet: LatinAlphabet): Vector[MidToken] = {
     def tokens = for (n <- corpus.nodes zipWithIndex) yield {
       LatinTextReader.nodeToTokens(n._1, alphabet)
     }

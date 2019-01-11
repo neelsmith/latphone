@@ -1,6 +1,7 @@
 package edu.holycross.shot.latin
 import edu.holycross.shot.mid.validator._
 import edu.holycross.shot.cite._
+import edu.holycross.shot.ohco2._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
@@ -10,25 +11,52 @@ import scala.scalajs.js.annotation._
 */
 @JSExportAll  object Latin23Alphabet extends LatinAlphabet with MidOrthography {
 
+  /** Ordered sequence of alphabetic characters.*/
+  def alphabetString: String = {
+    "abcdefghiklmnopqrstuxyz"
+
+  }
+  /** Ordered sequence of allowed punctuation characters.*/
+  def punctuationString: String = {
+    "(),;:.?"
+  }
+
+  /** Descriptive phrase required by MidOrthography trait.*/
   def orthography = "Latin alphabet with 23 alphabetic characters"
 
+  /** Descriptive phrase required by MidOrthography trait.*/
+  def label = """ Latin alphabet with 23 alphabetic characters.
+   "i" and "u" are treated as semivowels."""
 
+
+  /** Set of all valid Unicode code points.*/
   val charSet:  Set[Int] = (for (ch <- Latin23Alphabet.alphabetString ++ Latin23Alphabet.punctuationString) yield {ch.toInt}).toSet
 
+  /** True if cp is a valid code point. Required by
+  * MidOrthography trait.
+  *
+  * @param cp Code point to test.
+  */
   def validCP(cp: Int): Boolean  = {
     charSet.contains(cp)
   }
+
+  /** List of token categories recognizable from this orthography.
+  * Required by MidOrthography trait.
+  */
   def tokenCategories: Vector[MidTokenCategory]  = {
     Vector(PraenomenToken, PunctuationToken, LexicalToken, NumericToken, InvalidToken)
   }
-  def tokenizeString(s: String): Vector[MidToken] = {
-    val dummy = CtsUrn("urn:cts:null:null:")
-    
-    Vector.empty[MidToken]
+
+  /** Tokenization of a citable node of text in this orthography.
+  *
+  * @param n Node of text to tokenize.
+  */
+  def tokenizeNode(n: CitableNode): Vector[MidToken] = {
+
+    LatinTextReader.nodeToTokens(n, this)
   }
 
-  def label = """ Latin alphabet with 23 alphabetic characters.
-   "i" and "u" are treated as semivowels."""
 
   //Regular expressions for syllabification
   /** RE for vowel-consonant-vowel pattern.*/
@@ -65,15 +93,7 @@ import scala.scalajs.js.annotation._
   /** RE for diphthong ei when it should be read as e+semivowel u. */
   val fakeDiphthongU = "(.*)(au|eu)-([aeiou].+)".r
 
-  /** Ordered sequence of alphabetic characters.*/
-  def alphabetString: String = {
-    "abcdefghiklmnopqrstuxyz"
 
-  }
-  /** Ordered sequence of allowed punctuation characters.*/
-  def punctuationString: String = {
-    "(),;:.?"
-  }
 /*
   def charSet : Set[Int] = {
     val iList =

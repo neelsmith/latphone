@@ -32,34 +32,35 @@ urn:cts:omar:stoa0179.stoa001.omar:2.8.4#creatus Sp. Lucretius consul, qui magno
   it should "determine the lexical category of a single token" in {
 
     // pure alphabetic chars:
-    assert (LatinTextReader.lexicalCategory("consul", Latin24Alphabet) == LexicalToken)
+    assert (LatinTextReader.lexicalCategory("consul", Latin23Alphabet).get == LexicalToken)
 
     // genuine numeric chars:
     val seventeen = "ⅩⅦ"
-    assert (LatinTextReader.lexicalCategory(seventeen, Latin24Alphabet) == NumericToken)
+    assert (LatinTextReader.lexicalCategory(seventeen, Latin23Alphabet).get == NumericToken)
   }
 
-  it should "be case-insensitive" in {
-    assert (LatinTextReader.lexicalCategory("Lucretius", Latin24Alphabet) == LexicalToken)
+  it should "be case-insensitive" in  {
+    assert (LatinTextReader.lexicalCategory("Lucretius", Latin24Alphabet).get == LexicalToken)
   }
 
   it should "reject tokens with mixed character types" in {
     // no good!  Alphabetic "X" with numeric seven!
     val mixedAlphaNum = "XⅧ	"
-    assert (LatinTextReader.lexicalCategory(mixedAlphaNum, Latin24Alphabet) == InvalidToken)
+    assert (LatinTextReader.lexicalCategory(mixedAlphaNum, Latin24Alphabet) == None)
 
     // numeric ten with alphabetic "VII"
     val mixedNumAlph = "ⅩVII"
-    assert (LatinTextReader.lexicalCategory(mixedNumAlph, Latin24Alphabet) == InvalidToken)
+    assert (LatinTextReader.lexicalCategory(mixedNumAlph, Latin24Alphabet) == None)
   }
 
-  it should "generate a vector of tokens from a citable node" in {
+  it should "generate a vector of tokens from a citable node" in  {
     val corpus = TextRepository(livyTiny).corpus
-    val tks = LatinTextReader.nodeToTokens(corpus.nodes(0), Latin24Alphabet)
+    val tks = LatinTextReader.nodeToTokens(corpus.nodes(0), Latin23Alphabet)
     assert(tks.size == 5)
-    assert(tks.filter(_.category == LexicalToken).size == 3)
-    assert(tks.filter(_.category == PunctuationToken).size == 1)
-    assert(tks.filter(_.category == PraenomenToken).size == 1)
+
+    assert(tks.filter(_.tokenCategory.get == LexicalToken).size == 3)
+    assert(tks.filter(_.tokenCategory.get == PunctuationToken).size == 1)
+    assert(tks.filter(_.tokenCategory.get == PraenomenToken).size == 1)
   }
 
   it should "accept leading and repeated whitespace when tokenizing" in {
