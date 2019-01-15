@@ -2,6 +2,7 @@
 title: Tokenizing citable text
 layout: page
 ---
+WHO PAGE IS FAKE
 
 In addition to the `latphone` library, you'll need the `cite` and `ohco2` libraries from the CITE architecture:
 
@@ -26,12 +27,14 @@ val corpus = TextRepository(livyTwoEightFour).corpus
 
 The only citable node in this tiny corpus book 2, chapter 8, section 4 of Livy, so we'll grab the first node in the corpus, and convert it to a series of tokens.
 
+
 ```tut:silent
 val livy2_8_4 = corpus.nodes(0)
-val tokens = LatinTextReader.nodeToTokens(livy2_8_4, Latin24Alphabet)
-
+val tokens = Latin23Alphabet.tokenizeNode(livy2_8_4)
 assert(tokens.size == 29)
 ```
+
+
 
 ```tut
 println(tokens.mkString("\n"))
@@ -39,7 +42,8 @@ println(tokens.mkString("\n"))
 
 Maybe you want to strip out punctuation:  easy in Scala.
 
+
 ```tut:silent
-val depunctuated = tokens.filterNot(_.category == Punctuation)
+val depunctuated = tokens.filterNot(_.tokenCategory == Some(PunctuationToken))
 assert(depunctuated.size == 26)
 ```

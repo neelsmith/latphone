@@ -2,6 +2,7 @@
 title: Tokenizing citable text
 layout: page
 ---
+WHO PAGE IS FAKE
 
 In addition to the `latphone` library, you'll need the `cite` and `ohco2` libraries from the CITE architecture:
 
@@ -26,49 +27,52 @@ val corpus = TextRepository(livyTwoEightFour).corpus
 
 The only citable node in this tiny corpus book 2, chapter 8, section 4 of Livy, so we'll grab the first node in the corpus, and convert it to a series of tokens.
 
+
 ```scala
 val livy2_8_4 = corpus.nodes(0)
-val tokens = LatinTextReader.nodeToTokens(livy2_8_4, Latin24Alphabet)
-
+val tokens = Latin23Alphabet.tokenizeNode(livy2_8_4)
 assert(tokens.size == 29)
 ```
 
+
+
 ```scala
 scala> println(tokens.mkString("\n"))
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.0,creatus,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.1,Sp.,Praenomen)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.2,Lucretius,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.3,consul,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.3_0,,,Punctuation)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.4,qui,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.5,magno,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.6,natu,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.7,non,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.8,sufficientibus,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.9,iam,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.10,viribus,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.11,ad,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.12,consularia,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.13,munera,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.14,obeunda,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.15,intra,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.16,paucos,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.17,dies,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.18,moritur,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.18_0,.,Punctuation)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.19,suffectus,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.20,in,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.21,Lucreti,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.22,locum,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.23,M.,Praenomen)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.24,Horatius,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.25,Pulvillus,LexicalToken)
-LatinToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.25_0,.,Punctuation)
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.0,creatus,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.1,Sp.,Some(PraenomenToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.2,Lucretius,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.3,consul,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.3_0,,,Some(PunctuationToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.4,qui,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.5,magno,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.6,natu,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.7,non,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.8,sufficientibus,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.9,iam,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.10,viribus,None)
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.11,ad,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.12,consularia,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.13,munera,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.14,obeunda,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.15,intra,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.16,paucos,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.17,dies,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.18,moritur,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.18_0,.,Some(PunctuationToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.19,suffectus,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.20,in,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.21,Lucreti,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.22,locum,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.23,M.,Some(PraenomenToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.24,Horatius,Some(LexicalToken))
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.25,Pulvillus,None)
+MidToken(urn:cts:omar:stoa0179.stoa001.omar:2.8.4.25_0,.,Some(PunctuationToken))
 ```
 
 Maybe you want to strip out punctuation:  easy in Scala.
 
+
 ```scala
-val depunctuated = tokens.filterNot(_.category == Punctuation)
+val depunctuated = tokens.filterNot(_.tokenCategory == Some(PunctuationToken))
 assert(depunctuated.size == 26)
 ```
