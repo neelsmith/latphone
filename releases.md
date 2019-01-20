@@ -1,6 +1,9 @@
 # Release notes
 
 
+**2.1.1**:  Bug fix in `midvalidator` package 5.2.1.
+
+
 **2.1.0**:  Updates from `midvalidator` package 5.2.0.
 
 
