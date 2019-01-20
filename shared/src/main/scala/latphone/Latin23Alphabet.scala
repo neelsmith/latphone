@@ -53,7 +53,6 @@ import scala.scalajs.js.annotation._
   * @param n Node of text to tokenize.
   */
   def tokenizeNode(n: CitableNode): Vector[MidToken] = {
-
     LatinTextReader.nodeToTokens(n, this)
   }
 

@@ -1,15 +1,57 @@
 package edu.holycross.shot.latin
+
+import edu.holycross.shot.mid.validator._
+import edu.holycross.shot.cite._
+import edu.holycross.shot.ohco2._
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 /** Latin alphabet with 24 alphabetic characters.
 * "i"is treated as a semivowel, but vocalic "u" and
 * consonantal "v" are distingished.
 */
-@JSExportAll  object Latin24Alphabet extends LatinAlphabet {
+@JSExportAll  object Latin24Alphabet extends LatinAlphabet with MidOrthography {
 
+  /** Descriptive phrase required by MidOrthography trait.*/
+  def orthography = "Latin alphabet with 24 alphabetic characters"
+
+  /** Descriptive phrase required by MidOrthography trait.*/
   def label = """ Latin alphabet with 24 alphabetic characters.
   "i"is treated as a semivowel, but vocalic "u" and
   consonantal "v" are distingished. """
+
+
+  /** Set of all valid Unicode code points.*/
+  val charSet:  Set[Int] = (for (ch <- Latin24Alphabet.alphabetString ++ Latin24Alphabet.punctuationString) yield {ch.toInt}).toSet
+
+
+  /** True if cp is a valid code point. Required by
+  * MidOrthography trait.
+  *
+  * @param cp Code point to test.
+  */
+  def validCP(cp: Int): Boolean  = {
+    charSet.contains(cp)
+  }
+
+
+  /** List of token categories recognizable from this orthography.
+  * Required by MidOrthography trait.
+  */
+  def tokenCategories: Vector[MidTokenCategory]  = {
+    Vector(PraenomenToken, PunctuationToken, LexicalToken, NumericToken, InvalidToken)
+  }
+
+
+
+  /** Tokenization of a citable node of text in this orthography.
+  *
+  * @param n Node of text to tokenize.
+  */
+  def tokenizeNode(n: CitableNode): Vector[MidToken] = {
+    LatinTextReader.nodeToTokens(n, this)
+  }
+
 
   //Regular expressions for syllabification
   /** RE for vowel-consonant-vowel pattern.*/
