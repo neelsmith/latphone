@@ -1,5 +1,9 @@
 # Release notes
 
+
+**2.1.0**:  Updates from `midvalidator` package 5.2.0.
+
+
 **2.0.0**: API-breaking changes.  `Latin23Alphabet` now implements the `MidOrthography` trait.
 
 **1.5.1**: updates versions of some included libraries.

@@ -25,7 +25,7 @@ lazy val crossed = crossProject.in(file(".")).
 
         "edu.holycross.shot.cite" %%% "xcite" % "3.7.0",
         "edu.holycross.shot" %%% "ohco2" % "10.11.1",
-        "edu.holycross.shot" %%% "midvalidator" % "3.1.0"
+        "edu.holycross.shot" %%% "midvalidator" % "5.2.0"
 
 
       )
