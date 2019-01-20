@@ -18,7 +18,7 @@ import scala.scalajs.js.annotation._
   }
   /** Ordered sequence of allowed punctuation characters.*/
   def punctuationString: String = {
-    "(),;:.?"
+    """(),;:."?!"""
   }
 
   /** Descriptive phrase required by MidOrthography trait.*/

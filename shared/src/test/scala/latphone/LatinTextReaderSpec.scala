@@ -80,4 +80,10 @@ urn:cts:omar:stoa0179.stoa001.omar:2.8.4#creatus Sp. Lucretius consul, qui magno
     val expectedTokens = 54
     assert(tokens.size == expectedTokens)
   }
+
+  it should "recognize a leading double quote as puncutation" in {
+      val txt = """increpat "o patrum suboles oblita priorum,"""
+      val depuncted = LatinTextReader.depunctuate(txt, Latin24Alphabet)
+      println(depuncted)
+  }
 }

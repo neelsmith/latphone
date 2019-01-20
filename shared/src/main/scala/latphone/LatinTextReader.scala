@@ -49,9 +49,10 @@ import edu.holycross.shot.mid.validator._
   * strings.
   */
   def depunctuate (s: String, alphabet: LatinAlphabet, depunctVector: Vector[String] = Vector.empty): Vector[String] = {
-    val trailChar = s"${s.last}"
+    val trimmed = s.trim
+    val trailChar = s"${trimmed.last}"
     if (alphabet.punctuationString.contains(trailChar)) {
-      val dropLast = s.reverse.tail.reverse
+      val dropLast = trimmed.reverse.tail.reverse
       if (dropLast.nonEmpty) {
         depunctuate(dropLast, alphabet, trailChar +: depunctVector)
       } else {
@@ -72,17 +73,23 @@ import edu.holycross.shot.mid.validator._
   */
   def nodeToTokens(n: CitableNode, alphabet: LatinAlphabet) : Vector[MidToken] = {
     val urn = n.urn
+    // initial chunking on white space
     val units = n.text.split(" ").filter(_.nonEmpty)
 
     val classified = for (unit <- units.zipWithIndex) yield {
       val newPassage = urn.passageComponent + "." + unit._2
-      val newUrn = CtsUrn(urn.dropPassage.toString + newPassage)
+      val newVersion = urn.addVersion(urn.versionOption.getOrElse("") + "_tkns")
+      val newUrn = CtsUrn(newVersion.dropPassage.toString + newPassage)
 
       //println(unit + " in " + newUrn)
+      val trimmed = unit._1.trim
       // process praenomina first since "." is part
       // of the token:
       val tokenClass: Vector[MidToken] = if (praenomina.contains(unit._1)) {
         Vector(MidToken(newUrn, unit._1, Some(PraenomenToken)))
+
+      } else if (trimmed(0) == '"') {
+        Vector(MidToken(newUrn, "\"", Some(PunctuationToken)))
 
       } else {
         val depunctuated = depunctuate(unit._1, alphabet)

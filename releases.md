@@ -1,6 +1,12 @@
 # Release notes
 
-**2.2.0**: `Latin24Alphabet` now extends `MidOrthography` trait. 
+**2.2.2**: Fixes a bug in tokenizing of leading double quotes.
+
+
+**2.2.1**:  Recognize `"` and `!` as acceptable punctuation characters.
+
+
+**2.2.0**: `Latin24Alphabet` now extends `MidOrthography` trait.
 
 
 **2.1.1**:  Bug fix in `midvalidator` package 5.2.1.
