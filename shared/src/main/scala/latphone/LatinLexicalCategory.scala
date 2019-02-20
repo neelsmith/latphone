@@ -25,3 +25,7 @@ case object PraenomenToken extends LatinLexicalCategory with MidTokenCategory {v
 
 /** Invalid token for a given alphabet.*/
 case object InvalidToken extends LatinLexicalCategory with MidTokenCategory {val name = "invalid"}
+
+
+/** Invalid token for a given alphabet.*/
+case object SyllableToken extends LatinLexicalCategory with MidTokenCategory {val name = "syllable"}

@@ -6,7 +6,7 @@
 
 A library for working with Latin texts in a specifeid orthography.
 
-## Current version: 2.2.2
+## Current version: 2.3.0
 
 
 Status:  **active development**. [Release notes](releases.md)
@@ -19,4 +19,4 @@ Status:  **active development**. [Release notes](releases.md)
 
 ## Documentation
 
-See <https://neelsmith.github.io/latphone/>.
+See <http://neelsmith.info/code/langlibs/>.
