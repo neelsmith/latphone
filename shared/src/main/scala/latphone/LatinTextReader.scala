@@ -73,8 +73,8 @@ import edu.holycross.shot.mid.validator._
   */
   def nodeToTokens(n: CitableNode, alphabet: LatinAlphabet) : Vector[MidToken] = {
     val urn = n.urn
-    // initial chunking on white space
-    val units = n.text.split(" ").filter(_.nonEmpty)
+    // initial chunking on white space and enclitic delimiter
+    val units = n.text.split("[ \\-]").filter(_.nonEmpty)
 
     val classified = for (unit <- units.zipWithIndex) yield {
       val newPassage = urn.passageComponent + "." + unit._2

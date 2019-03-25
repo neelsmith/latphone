@@ -23,4 +23,13 @@ class Latin24AlphabetMidTraitSpec extends FlatSpec {
     println(tokens)
 
   }
+
+  it should "recognize hyphen as enclitic delimiter" in {
+
+
+    val cex = "urn:cts:omar:stoa0179.stoa001.omar:1.pr.7#suum conditoris-que sui parentem"
+    val corpus = Corpus(cex)
+    val tokens = Latin24Alphabet.tokenizeCorpus(corpus)
+    println(tokens)
+  }
 }
