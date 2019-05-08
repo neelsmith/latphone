@@ -1,5 +1,11 @@
 # Release notes
 
+
+
+**2.5.0**: `Latin25Alphabet` now extends `MidOrthography` trait.
+
+
+
 **2.4.0**:  Support explicit indication of enclitic word boundary with `-`.
 
 **2.3.0**: Add an `MidOrthography` for syllables in Latin23 alphabet.
