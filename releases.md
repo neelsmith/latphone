@@ -1,6 +1,8 @@
 # Release notes
 
+**2.5.2**: Update library dependencies.
 
+**2.5.1**: Update library dependencies.
 
 **2.5.0**: `Latin25Alphabet` now extends `MidOrthography` trait.
 
