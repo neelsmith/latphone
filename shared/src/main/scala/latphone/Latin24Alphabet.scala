@@ -17,12 +17,12 @@ import scala.scalajs.js.annotation._
 
   /** Descriptive phrase required by MidOrthography trait.*/
   def label = """ Latin alphabet with 24 alphabetic characters.
-  "i"is treated as a semivowel, but vocalic "u" and
+  "i" is treated as a semivowel, but vocalic "u" and
   consonantal "v" are distingished. """
 
 
   /** Set of all valid Unicode code points.*/
-  val charSet:  Set[Int] = (for (ch <- Latin24Alphabet.alphabetString ++ Latin24Alphabet.punctuationString) yield {ch.toInt}).toSet
+  val charSet:  Set[Int] = (for (ch <- Latin24Alphabet.alphabetString ++ Latin24Alphabet.punctuationString ++ Latin24Alphabet.metaCharacters) yield {ch.toInt}).toSet
 
 
   /** True if cp is a valid code point. Required by
@@ -97,6 +97,11 @@ import scala.scalajs.js.annotation._
   def punctuationString: String = {
     //"(),;:.?"
     """(),;:."?!"""
+  }
+
+
+  def metaCharacters: String = {
+    "'+"
   }
 
   /** Set of all recognized diphthongs.*/

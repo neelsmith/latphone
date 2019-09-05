@@ -1,5 +1,7 @@
 # Release notes
 
+**2.6.0**: `+` character defined as delimiter for enclitics.
+
 **2.5.2**: Update library dependencies.
 
 **2.5.1**: Update library dependencies.

@@ -19,7 +19,7 @@ urn:cts:omar:stoa0179.stoa001.omar:#book,chapter,section#Livy#History of Rome#om
 #!ctsdata
 urn:cts:omar:stoa0179.stoa001.omar:2.8.4#creatus Sp. Lucretius consul, qui magno natu non sufficientibus iam viribus ad consularia munera obeunda intra paucos dies moritur. suffectus in Lucreti locum M. Horatius Pulvillus.
 """
-  val livyOneFourOne = "#!ctscatalog\nurn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online#lang\nurn:cts:omar:stoa0179.stoa001.omar:#book,chapter,section#Livy#History of Rome#omar edition##true#lat\n\n#!ctsdata\nurn:cts:omar:stoa0179.stoa001.omar:1.4.1#sed debebatur, ut opinor, fatis tantae origo urbis maximi-que secundum deorum opes imperii principium. vi compressa Vestalis cum geminum partum edidisset,"
+  val livyOneFourOne = "#!ctscatalog\nurn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online#lang\nurn:cts:omar:stoa0179.stoa001.omar:#book,chapter,section#Livy#History of Rome#omar edition##true#lat\n\n#!ctsdata\nurn:cts:omar:stoa0179.stoa001.omar:1.4.1#sed debebatur, ut opinor, fatis tantae origo urbis maximi+que secundum deorum opes imperii principium. vi compressa Vestalis cum geminum partum edidisset,"
 
 
   "A LatinTextReader"  should "depunctuate a token block into individual tokens" in {
