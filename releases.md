@@ -1,6 +1,8 @@
 # Release notes
 
-**2.7.1**:  Update library dependencies.
+**2.7.3**:  Test tokenization including `+` character to mark morpheme boundaries.
+
+**2.7.2**:  Update library dependencies.
 
 
 **2.7.0**: Resolve several issues about punctuation chars.

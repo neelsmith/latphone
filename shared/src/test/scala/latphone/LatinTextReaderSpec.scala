@@ -56,11 +56,14 @@ urn:cts:omar:stoa0179.stoa001.omar:2.8.4#creatus Sp. Lucretius consul, qui magno
   it should "generate a vector of tokens from a citable node" in  {
     val corpus = TextRepository(livyTiny).corpus
     val tks = LatinTextReader.nodeToTokens(corpus.nodes(0), Latin23Alphabet)
+
+
     assert(tks.size == 5)
 
     assert(tks.filter(_.tokenCategory.get == LexicalToken).size == 3)
     assert(tks.filter(_.tokenCategory.get == PunctuationToken).size == 1)
     assert(tks.filter(_.tokenCategory.get == PraenomenToken).size == 1)
+
   }
 
   it should "accept leading and repeated whitespace when tokenizing" in {

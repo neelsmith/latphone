@@ -16,7 +16,7 @@ urn:cts:omar:stoa0179.stoa001.omar:1.4.5#ita, velut defuncti regis imperio, in p
 urn:cts:omar:stoa0179.stoa001.omar:1.4.6#tenet fama, cum fluitantem alveum, quo expositi erant pueri, tenuis in sicco aqua destituisset, lupam sitientem ex montibus, qui circa sunt, ad puerilem vagitum cursum flexisse; eam summissas infantibus adeo mitem praebuisse mammas, ut lingua lambentem pueros magister regii pecoris invenerit—
 urn:cts:omar:stoa0179.stoa001.omar:1.4.7#Faustulo fuisse nomen ferunt—; ab eo ad stabula Larentiae uxori educandos datos. sunt, qui Larentiam vulgato corpore lupam inter pastores vocatam putent; inde locum fabulae ac miraculo datum.
 urn:cts:omar:stoa0179.stoa001.omar:1.4.8#ita geniti itaque educati, cum primum adolevit aetas, nec in stabulis nec ad pecora segnes, venando peragrare saltus.
-urn:cts:omar:stoa0179.stoa001.omar:1.4.9#hinc robore corporibus animisque sumpto iam non feras tantum subsistere, sed in latrones praeda onustos impetus facere pastoribusque rapta dividere et cum his crescente in dies grege iuvenum seria ac iocos celebrare.
+urn:cts:omar:stoa0179.stoa001.omar:1.4.9#hinc robore corporibus animis+que sumpto iam non feras tantum subsistere, sed in latrones praeda onustos impetus facere pastoribus+que rapta dividere et cum his crescente in dies grege iuvenum seria ac iocos celebrare.
 """
   val corpus = Corpus(cex)
 
@@ -61,6 +61,15 @@ urn:cts:omar:stoa0179.stoa001.omar:1.4.9#hinc robore corporibus animisque sumpto
   it should "correctly sort token histograms with the inherited tokenHistogram function" in {
     val tokens: Vector[MidToken] = Latin23Alphabet.tokenizeCorpus(corpus)
     //println(MidOrthography.tokenHistogram(tokens))
+  }
+
+  it should "recognize hyphen as a morpheme boundary" in {
+    val ablabs = "urn:cts:omar:stoa0179.stoa001.omar:1.4.9#hinc robore corporibus animis+que sumpto"
+    val tinyCorpus = Corpus(ablabs)
+    val tokens: Vector[MidToken] = Latin23Alphabet.tokenizeCorpus(tinyCorpus)
+
+
+    assert(tokens.size == 6)
   }
 
 

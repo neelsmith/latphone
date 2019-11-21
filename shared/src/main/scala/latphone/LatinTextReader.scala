@@ -73,7 +73,7 @@ import edu.holycross.shot.mid.validator._
   */
   def nodeToTokens(n: CitableNode, alphabet: LatinAlphabet) : Vector[MidToken] = {
     val urn = n.urn
-    // initial chunking on white space, enclitic delimiter, and elision marker
+    // initial chunking on white space, morpheme boundary marker, and elision marker
     val units = n.text.split("[ \\+\\']").filter(_.nonEmpty)
 
     val classified = for (unit <- units.zipWithIndex) yield {
