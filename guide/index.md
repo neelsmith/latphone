@@ -3,6 +3,11 @@ layout: page
 title: "Latin text library"
 ---
 
+
+## Latin text library
+
+**@VERSION@**
+
 `latphone` is a cross-platform library for working with Latin texts in a specified orthography.
 
 
