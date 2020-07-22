@@ -19,4 +19,7 @@ Status:  **active development**. [Release notes](releases.md)
 
 ## Documentation
 
-See <http://neelsmith.info/code/langlibs/>.
+
+User guide: <http://neelsmith.githuib.io/latphone/>
+
+API docs: <http://neelsmith.info/code/langlibs/>.
