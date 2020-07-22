@@ -5,6 +5,8 @@ import edu.holycross.shot.ohco2._
 import edu.holycross.shot.cite._
 
 
+import edu.holycross.shot.mid.orthography._
+
 class LatinTextReaderSpec extends FlatSpec {
 
 val livyTiny = """#!ctscatalog

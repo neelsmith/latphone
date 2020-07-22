@@ -5,6 +5,9 @@ import edu.holycross.shot.ohco2._
 import edu.holycross.shot.cite._
 
 
+import edu.holycross.shot.mid.orthography._
+
+
 class LatinTokenizingSpec extends FlatSpec {
 
   "A LatinToken"   should "serialize itself to delimited text" in {

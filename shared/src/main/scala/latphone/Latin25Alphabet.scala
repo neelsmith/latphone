@@ -1,7 +1,7 @@
 package edu.holycross.shot.latin
 
+import edu.holycross.shot.mid.orthography._
 
-import edu.holycross.shot.mid.validator._
 import edu.holycross.shot.cite._
 import edu.holycross.shot.ohco2._
 
@@ -13,15 +13,16 @@ import scala.scalajs.js.annotation._
 @JSExportAll  object Latin25Alphabet extends LatinAlphabet with MidOrthography {
 
 
-  /** Descriptive phrase required by MidOrthography trait.*/
+
+  //////////////////////////////////////////////////
+  //
+  // 5 methods required by MidOrthography trait
+  //
+  /** 1. Descriptive phrase required by MidOrthography trait.*/
   def orthography = "Latin alphabet with 25 alphabetic characters"
 
 
-  /** Set of all valid Unicode code points.*/
-  val charSet:  Set[Int] = (for (ch <- Latin25Alphabet.alphabetString ++ Latin25Alphabet.punctuationString) yield {ch.toInt}).toSet
-
-
-  /** True if cp is a valid code point. Required by
+  /** 2. True if cp is a valid code point. Required by
   * MidOrthography trait.
   *
   * @param cp Code point to test.
@@ -30,9 +31,14 @@ import scala.scalajs.js.annotation._
     charSet.contains(cp)
   }
 
+  /** 3. List of token categories recognizable from this orthography.
+  * Required by MidOrthography trait.
+  */
+  def tokenCategories: Vector[MidTokenCategory]  = {
+    Vector(PraenomenToken, PunctuationToken, LexicalToken, NumericToken, InvalidToken, ForeignToken)
+  }
 
-
-  /** Tokenization of a citable node of text in this orthography.
+  /** 4. Tokenization of a citable node of text in this orthography.
   *
   * @param n Node of text to tokenize.
   */
@@ -40,12 +46,21 @@ import scala.scalajs.js.annotation._
     LatinTextReader.nodeToTokens(n, this)
   }
 
-  /** List of token categories recognizable from this orthography.
-  * Required by MidOrthography trait.
-  */
-  def tokenCategories: Vector[MidTokenCategory]  = {
-    Vector(PraenomenToken, PunctuationToken, LexicalToken, NumericToken, InvalidToken)
-  }
+  /** 5. Value for exemplar ID in tokenzied editions. */
+  def exemplarId: String = "lat25tkn"
+
+
+
+  /** Set of all valid Unicode code points.*/
+  val charSet:  Set[Int] = (for (ch <- Latin25Alphabet.alphabetString ++ Latin25Alphabet.punctuationString) yield {ch.toInt}).toSet
+
+
+
+
+
+
+
+
 
 
   def label = """Latin alphabet with 25 alphabetic characters.

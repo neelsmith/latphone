@@ -1,5 +1,6 @@
 package edu.holycross.shot.latin
-import edu.holycross.shot.mid.validator._
+
+import edu.holycross.shot.mid.orthography._
 import edu.holycross.shot.cite._
 import edu.holycross.shot.ohco2._
 
@@ -12,15 +13,24 @@ import scala.scalajs.js.annotation._
 @JSExportAll  object Latin23Syllable extends MidOrthography {
 
 
-  /** Descriptive phrase required by MidOrthography trait.*/
+  //////////////////////////////////////////////////
+  //
+  // 5 methods required by MidOrthography trait
+  //
+  /** 1. Descriptive phrase required by MidOrthography trait.*/
   def orthography = "Latin alphabet with 23 alphabetic characters tokenizing by syllable"
 
-  // required for MidOrthography
+  // 2. required for MidOrthography
   def validCP(cp: Int): Boolean  = {
     Latin23Alphabet.validCP(cp)
   }
 
-  // required for MidOrthography
+  // 3. Required for MidOrthography
+  def tokenCategories: Vector[MidTokenCategory]  = {
+    Vector(SyllableToken, PunctuationToken)
+  }
+
+  // 4. Required for MidOrthography.
   def tokenizeNode(n: CitableNode): Vector[MidToken] = {
     val newVersion = n.urn.addVersion(n.urn.versionOption.getOrElse("") + "_sylls")
 
@@ -38,10 +48,9 @@ import scala.scalajs.js.annotation._
     }
     syllableTokens.toVector
   }
+  /** 5. Value for exemplar ID in tokenzied editions. */
+  def exemplarId: String = "lat23syll"
 
-  // required for MidOrthography
-  def tokenCategories: Vector[MidTokenCategory]  = {
-    Vector(SyllableToken, PunctuationToken)
-  }
+
 
 }

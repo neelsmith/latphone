@@ -1,5 +1,7 @@
 # Release notes
 
+**3.0.0**:  API-breaking changes in library dependencies.
+
 **2.7.3**:  Test tokenization including `+` character to mark morpheme boundaries.
 
 **2.7.2**:  Update library dependencies.

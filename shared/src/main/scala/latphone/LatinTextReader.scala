@@ -1,9 +1,15 @@
 package edu.holycross.shot.latin
-import scala.scalajs.js
-import scala.scalajs.js.annotation._
+
+
+import edu.holycross.shot.mid.orthography._
 import edu.holycross.shot.ohco2._
 import edu.holycross.shot.cite._
-import edu.holycross.shot.mid.validator._
+
+
+
+import scala.scalajs.js
+import scala.scalajs.js.annotation._
+
 
 /**  An object for reading and tokenizing plain-text documents  in Latin.
 */
@@ -14,7 +20,7 @@ import edu.holycross.shot.mid.validator._
   */
   val praenomina = Vector("Agr.", "Ap.", "A.", "K.", "D.", "F.", "C.", "Cn.", "L.", "Mam.", "M.", "M'.", "N.", "Oct.", "Opet.", "Post.", "Pro.", "P.", "Q.", "Sert.", "Ser.", "Sex.", "Sp.", "St.", "Ti", "T.", "V.", "Vol.", "Vop.")
 
-  /** Determine [[LatinLexicalCategory]] for a string representing
+  /** Determine [[MidTokenCategory]] for a string representing
   * a single token.
   * @param s String to analyze.
   * @param alphabet Alphabet the string is written in.
