@@ -3,6 +3,9 @@ layout: page
 title: "Numeric characters"
 ---
 
+**Version @VERSION@**
+
+
 The following numeric characters are defined for all implementations of the `LatinAlphabet`  trait:
 
 

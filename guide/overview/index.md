@@ -3,6 +3,9 @@ layout: page
 title: "Overview"
 ---
 
+**Version @VERSION@**
+
+
 ## Orthography of Latin
 
 At the core of the library is an extendable `LatinAlphabet` trait.  The `LatinString` class associates a string of characters with an implementation of this trait, and all processing of Latin strings takes account of the orthographic system used to compose the string.

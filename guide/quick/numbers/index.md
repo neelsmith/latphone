@@ -3,10 +3,14 @@ title: Numeric tokens
 layout: page
 ---
 
+**Version @VERSION@**
+
+
+## Numeric tokens
 
 The `LatinNumerics` object can validate the syntax of a Latin numeric string.
 
-```tut:silent
+```scala mdoc:silent
 import edu.holycross.shot.latin._
 
 assert(LatinNumerics.valid("ⅩⅣ"))
@@ -17,7 +21,7 @@ assert(LatinNumerics.valid("ⅣⅩ") == false)
 It can also convert valid values to integers.
 
 
-```tut:silent
+```scala mdoc:silent
 assert (LatinNumerics.numericToInt("ⅩⅣ") ==  14)
 ```
 
