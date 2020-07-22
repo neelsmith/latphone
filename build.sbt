@@ -42,7 +42,7 @@ lazy val crossed = crossProject(JSPlatform, JVMPlatform).in(file(".")).
       scalaJSUseMainModuleInitializer := true,
     )
 
-/*
+
     lazy val docs = project       // new documentation project
       .in(file("docs-build")) // important: it must not be docs/
       .dependsOn(crossed.jvm)
@@ -55,4 +55,3 @@ lazy val crossed = crossProject(JSPlatform, JVMPlatform).in(file(".")).
           "VERSION" -> "3.0.0"
         )
       )
-*/
